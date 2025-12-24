@@ -488,6 +488,20 @@ if Controls then
     end
   end
 
+  local function doConnect()
+    local host = tostring(Properties["Host"].Value or "")
+    local port = tonumber(Properties["Port"].Value) or 23
+    if host == "" then
+      Controls.LastError.String = "Host is empty (set Properties → Host)"
+      setStatus("Not configured: set Host in Properties", "ERROR")
+      return
+    end
+    Controls.LastError.String = ""
+    setStatus(string.format("Connecting to %s:%d…", host, port), "INFO")
+    logInfo("Connecting to", host, port)
+    sock:Connect(host, port)
+  end
+
   -- Socket event handling
   sock.EventHandler = function(_, evt, err)
     if evt == TcpSocket.Events.Connected then
@@ -549,12 +563,7 @@ if Controls then
 
   -- User actions
   Controls.Connect.EventHandler = function()
-    local host = tostring(Properties["Host"].Value or "")
-    local port = tonumber(Properties["Port"].Value) or 23
-    Controls.LastError.String = ""
-    setStatus(string.format("Connecting to %s:%d…", host, port), "INFO")
-    logInfo("Connecting to", host, port)
-    sock:Connect(host, port)
+    doConnect()
   end
 
   Controls.Disconnect.EventHandler = function()
@@ -642,5 +651,14 @@ if Controls then
   if pollInterval and pollInterval > 0 then
     pollTimer:Start(pollInterval)
   end
+
+  -- Auto-connect on runtime start for user-friendliness.
+  setStatus("Ready (press Connect or wait for auto-connect)", "INFO")
+  local auto = Timer.New()
+  auto.EventHandler = function()
+    auto:Stop()
+    if not sock.IsConnected then doConnect() end
+  end
+  auto:Start(0.2)
 end
 

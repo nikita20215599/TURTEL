@@ -30,11 +30,11 @@ This repo contains a **working Q‑SYS `.qplug` plugin** for **Turtle AV Chazy C
 ## Quick start
 
 1. Drag **“Turtle AV → Chazy Control → Chazy4K Router”** into your design.
-2. In the **Properties** pane:
+2. **Click the plugin block in the schematic** so the **Properties** pane populates, then:
    - Set **Host** to your Chazy Control IP (common defaults: `192.168.6.100` or `169.254.8.100`)
    - Leave **Port** as `23` (TELNET default)
    - Set **RX Count** and **TX Count** to match your system
-3. Click **Connect**.
+3. **Run the design** (Emulate / load to Core), then click **Connect** (or wait for auto-connect).
 4. For any RX row:
    - Set **Select TX**
    - Press **Take** (or press **Clear** to unroute)

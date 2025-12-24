@@ -25,7 +25,7 @@ The API can be reached via “Web GUI/Telnet or SSH login/API commands” on eit
 
 1. Install the plugin (`plugin/TurtleAV-Chazy-Control.qplug`).
 2. Drag the plugin into your schematic.
-3. Select the plugin and configure **Properties**:
+3. **Click the plugin block in the schematic** (not just the plugin UI window) and configure **Properties**:
    - **Host**: IP/hostname of Chazy Control (example: `192.168.6.100`)
    - **Port**: `23` (default TELNET port per API reference)
    - **RX Count**: how many RX rows you want exposed (1–64)
@@ -36,9 +36,16 @@ The API can be reached via “Web GUI/Telnet or SSH login/API commands” on eit
 
 ## Using the plugin (routing)
 
+## Important: run the design (Emulate / Core)
+
+The plugin only connects and sends commands when the design is **running**:
+
+- **Emulate in Q‑SYS Designer** (F5), or
+- **Load to a Core**
+
 ### Connect
 
-- Press **Connect**.
+- Press **Connect** (or wait a moment for **auto-connect** on startup).
 - The plugin will:
   - Open a TCP session to Chazy Control.
   - Fetch global status (`GET STATUS`).
