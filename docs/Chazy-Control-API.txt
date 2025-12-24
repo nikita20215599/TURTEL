@@ -1,0 +1,6765 @@
+Chazy Control API Reference
+
+Chazy Control API
+
+1
+
+Chazy Control API Reference
+
+1. Summary ............................................................................................................................. 6
+1.1 Brief introduction ....................................................................................................... 6
+1.2 Direction for use......................................................................................................... 6
+1.3 Key concept................................................................................................................ 6
+2. Chazy Control System API reference................................................................................. 8
+2.1 Help information ........................................................................................................ 8
+2.2 Status information output.......................................................................................... 8
+2.3 Configure the Chazy Control rear panel GPIO direction ............................................ 9
+2.4 Configure the Chazy Control rear panel GPIO output level ..................................... 10
+2.5 Obtain the Chazy Control rear panel GPIO input level ............................................. 10
+2.6 Get the GPIO status information of the Chazy Control rear panel .......................... 11
+2.7 Set the Chazy Control serial port baudrate ............................................................. 11
+2.8 Reset the Chazy Control system configuration ....................................................... 12
+2.9 Reset the Chazy Control network configuration...................................................... 12
+2.10 Reset Chazy Control for all configurations............................................................ 13
+2.11 Restart the Chazy Control ...................................................................................... 13
+3. The RX control module API reference.............................................................................. 15
+3.1 Set the RXID number ................................................................................................ 15
+3.2 Set the RX name....................................................................................................... 15
+3.3 Set RX routing .......................................................................................................... 15
+3.4 Lock up the RX VIDEO route .................................................................................... 16
+3.5 Lock up the RX AUDIO route .................................................................................... 17
+3.6 Lock up the RX IR route ........................................................................................... 17
+3.7 Lock on the RX RS-232 routing ................................................................................ 18
+3.8 Lock up the RX USB route ........................................................................................ 18
+3.9 Lock up the RX CEC route ........................................................................................ 19
+3.10 Control that the RX power LED flashes ................................................................. 19
+3.11 Set up the RX OSD switch ...................................................................................... 20
+3.12 Set up the RX HDMI OUTPUT switch ..................................................................... 21
+3.13 Set up the RX HDMI OUTPUT MUTE...................................................................... 21
+3.14 Set the RX output resolution .................................................................................. 22
+3.15 Set the RX screen to rotate .................................................................................... 23
+3.16 Set up the RX, and the screen is flipped ................................................................ 23
+3.17 Set the RX IR level .................................................................................................. 24
+3.18 Set the RX IO level .................................................................................................. 24
+3.19 Set the RX IO direction ........................................................................................... 25
+3.20 Set the RX IO output level ...................................................................................... 25
+3.21 Set up the RX Relay switch .................................................................................... 26
+3.22 Set the RX image output mode .............................................................................. 26
+3.23 Set up the RX CEC / ARC switch............................................................................ 27
+3.24 Set up the RX audio-return ..................................................................................... 27
+3.25 Set the RX eARC to downgrade to the ARC ........................................................... 28
+3.26 Set the RX, copper/fiber mode .............................................................................. 28
+3.27 Set up the RX USB disk / camera switch ............................................................... 29
+3.28 Set the RX multicast mode .................................................................................... 29
+2
+
+Chazy Control API Reference
+
+3.29 Set the RX dante bridge ......................................................................................... 30
+3.30 Set the RX dante vlan ............................................................................................. 30
+3.31 Set the RX dante vlan tag....................................................................................... 31
+3.32 Send CEC data to RX (Guest mode) ...................................................................... 31
+3.33 Send IR data to RX (Guest mode) .......................................................................... 32
+3.34 Set the RX serial port parameters ......................................................................... 32
+3.35 Start the RX serial port Guest mode ...................................................................... 33
+3.36 Exit the RX serial port, Guest mode ....................................................................... 33
+3.37 Set up the RXIP mode ............................................................................................ 33
+3.38 Set up the RX IP address ....................................................................................... 34
+3.39 Sets the RX subnet mask....................................................................................... 35
+3.40 Set up the RX gateway address ............................................................................. 35
+3.41 Set up the RX network card to restart ................................................................... 36
+3.42 Remove the RX from the system ........................................................................... 36
+3.43 restart RX ............................................................................................................... 37
+3.44 reset RX .................................................................................................................. 37
+3.45 Get the RX status information ............................................................................... 37
+3.46 Set the RX preset IP mode ..................................................................................... 38
+3.47 Sets the RX preset IP start address....................................................................... 39
+3.48 Set the RX preset IP end address .......................................................................... 39
+3.49 Sets the RX preset subnet mask ........................................................................... 40
+3.50 Set the RX preset gateway address....................................................................... 40
+3.51 Save the RX preset configuration .......................................................................... 41
+4. The TX control module API reference .............................................................................. 42
+4.1 Set the TXID number ................................................................................................ 42
+4.2 Set the TX name....................................................................................................... 42
+4.3 Lock up the TX ARC route ........................................................................................ 42
+4.4 The control TX power LED flashes .......................................................................... 43
+4.5 Set up the TX audio source ...................................................................................... 44
+4.6 Set up the TX EDID ................................................................................................... 44
+4.7 Set up the TX copy of the RX EDID .......................................................................... 45
+4.8 Set the TX IR level .................................................................................................... 46
+4.9 Set the TXIO level ..................................................................................................... 46
+4.10 Set the TXIO direction ............................................................................................ 47
+4.11 Set the TXIO output level ....................................................................................... 47
+4.12 Set up the TX Relay switch .................................................................................... 48
+4.13 Set up the TX CEC / ARC switch ............................................................................ 48
+4.14 Set the TX electric mode ....................................................................................... 49
+4.15 Set the TX multicast mode .................................................................................... 49
+4.16 Set the TX dante bridge ......................................................................................... 50
+4.17 Set the TX dante vlan ............................................................................................. 50
+4.18 Set the TX dante vlan tag....................................................................................... 51
+4.19 Send CEC data to TX (Guest mode) ...................................................................... 51
+4.20 Send IR data to TX (Guest mode) .......................................................................... 52
+4.21 Set the TX serial port parameters.......................................................................... 52
+3
+
+Chazy Control API Reference
+
+4.22 Start the TX serial port, Guest mode ..................................................................... 53
+4.23 Exit the TX serial port, Guest mode ....................................................................... 53
+4.24 Set up the TXIP mode ............................................................................................ 53
+4.25 Set up the TX IP address ....................................................................................... 54
+4.26 Sets the TX subnet mask ....................................................................................... 55
+4.27 Set up the TX gateway address ............................................................................. 55
+4.28 Set up the TX network card to restart ................................................................... 56
+4.29 Remove the TX from the system ........................................................................... 56
+4.30 restart TX ............................................................................................................... 57
+4.31 reset TX .................................................................................................................. 57
+4.32 Gets the TX status information ............................................................................. 57
+4.33 Set the TX preset IP mode ..................................................................................... 58
+4.34 Sets the TX preset IP start address ....................................................................... 59
+4.35 Set the TX preset IP end address .......................................................................... 59
+4.36 Sets the TX preset subnet mask............................................................................ 60
+4.37 Set the TX preset gateway address ....................................................................... 60
+4.38 Save the TX preset configuration .......................................................................... 61
+5. The DANTE control module API reference ...................................................................... 62
+5.1 Set the dante name .................................................................................................. 62
+5.2 Set the dante audio sample rate .............................................................................. 62
+5.3 Set the dante audio encoding .................................................................................. 63
+5.4 Set the dante TX channel name............................................................................... 64
+5.5 Set the dante TX flow............................................................................................... 64
+5.6 Delete the dante TX flow.......................................................................................... 65
+5.7 Set the dante RX channel name .............................................................................. 65
+5.8 Set the dante subscribe ........................................................................................... 66
+5.9 Set the dante latency ............................................................................................... 66
+5.10 Get the dante status .............................................................................................. 67
+6. TX SS Module API reference ............................................................................................ 68
+6.1 Get the TX SS status information ............................................................................ 68
+6.2 Get the TX SS mainstream URL ............................................................................... 68
+6.3 Gets the TX SS substream URL ............................................................................... 69
+6.4 restart TX SS ............................................................................................................ 69
+6.5 reset TX SS ............................................................................................................... 70
+6.6 Set the TX SS mainstream parameters ................................................................... 70
+6.7 Set the TX SS subflow parameter ............................................................................ 71
+6.8 Set up the TX SS operating mode ............................................................................ 72
+6.9 Set up the TX SS IP .................................................................................................. 72
+6.10 Set up the TX SS VLAN TAG .................................................................................. 73
+7. Video wall module API reference ..................................................................................... 74
+7.1 Create a video wall ................................................................................................... 74
+7.2 Remove the video wall ............................................................................................. 74
+7.3 Modifies the video wall name .................................................................................. 74
+7.4 Set the video wall size ............................................................................................. 75
+7.5 Video wall is assigned to RX.................................................................................... 75
+4
+
+Chazy Control API Reference
+
+7.6 Create a video wall preset ....................................................................................... 76
+7.7 Delete the video wall preset ..................................................................................... 76
+7.8 Modifies the video wall preset name....................................................................... 77
+7.9 Start the video wall preset ....................................................................................... 77
+7.10 Set up the video wall preset class ......................................................................... 77
+7.11 Set up the signal source for the video wall preset class....................................... 78
+7.12 Set up the video wall preset matrix group ............................................................. 78
+7.13 Set up the signal source for the video wall preset matrix group .......................... 79
+7.14 Set up the video wall screen width direction border ............................................. 79
+7.15 Set up the video wall bezel .................................................................................... 80
+7.16 Get the video wall status ....................................................................................... 80
+8. System management module API reference ................................................................... 82
+8.1 Device search ........................................................................................................... 82
+8.2 View the device search results ................................................................................ 83
+8.3 Clear the device search results ............................................................................... 83
+8.4 Automatically add new devices to the system ........................................................ 84
+8.5 Add the new TX devices to the system ................................................................... 84
+8.6 Add the new RX devices, to the system .................................................................. 85
+8.7 Clear the existing equipment in the system ............................................................ 85
+9. Chazy Control Network configuration API reference ...................................................... 87
+9.1 Set up the Chazy Control IP mode ........................................................................... 87
+9.2 Set up the Chazy Control IP address ....................................................................... 87
+9.3 Set up the Chazy Control gateway address............................................................. 88
+9.4 Set the Chazy Control subnet mask ........................................................................ 88
+9.5 Restart the Chazy Control network card.................................................................. 89
+9.6 Set the Chazy Control TELNET port number ........................................................... 89
+9.7 Set up the Chazy Control HTTPS switch ................................................................. 90
+9.8 Modify the Chazy Control domain name ................................................................. 90
+
+5
+
+Chazy Control API Reference
+
+1. Summary
+1.1 Brief introduction
+This document is used to introduce the relevant API instructions based on Chazy
+Control.
+
+1.2 Direction for use
+Before using API instructions for Chazy Control, you must use TELNET or SSH to
+remotely log in to the corresponding terminal or use the serial port terminal for API
+instruction interaction. Either of the following methods can go to the control terminal
+for API interaction.
+a. TELNET Log in to Chazy Control with the default port number of 23.
+b. Use the serial port line to connect the serial port of the Chazy Control rear
+panel with the PC. Open the serial port terminal tool in the PC, and select the
+corresponding serial interface connection, you can enter the controller terminal
+for API interaction. The default port rate is 57600,8 bit data bit, 1 bit stop bit, no
+check bit.
+
+1.3 Key concept
+RX1：
+RX 1 appearing below refers to RX with ID number 1.
+TX1：
+The TX 1 presented below refers to the TX with the ID number 1.
+SS:
+The SS presented below refers to the secondary flow module of the TX.
+6
+
+Chazy Control API Reference
+
+7
+
+Chazy Control API Reference
+
+2. Chazy Control System API reference
+2.1 Help information
+API joggle
+The HELP or?
+description
+Print the API instructions supported by the current system
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+HELP information
+
+Print the HELP information
+
+example
+TELNET Log in to the Chazy Control
+input command:
+HELP
+input command:
+?
+
+2.2 Status information output
+API joggle
+GET STATUS
+description
+Output CHAZY CONTROL status information and the TX / RX status information added.
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+status information
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+GET STATUS
+return:
+================================================================
+CHAZY CONTROL Status Info
+FW Version: 1.00.17
+Power
+
+IR
+
+Baud
+
+On
+
+On
+
+57600
+
+ENC
+
+Type
+
+EDID
+
+IP
+
+013
+
+Gen 2
+
+DF000
+
+169.254.010.013 On /On
+
+DEC
+
+Type
+
+From
+
+IP
+
+NET/Sig
+
+NET/HDMI
+8
+
+Res
+
+Mode
+
+Chazy Control API Reference
+
+001
+
+Gen 2
+
+013
+
+169.254.020.001 On /Off
+
+00
+
+MX
+
+002
+
+Gen 2
+
+013
+
+169.254.020.002 On /Off
+
+00
+
+MX
+
+LAN
+
+DHCP
+
+IP
+
+Gateway
+
+SubnetMask
+
+01_POE Off
+
+169.254.008.100 169.254.008.001 255.255.000.000
+
+02_CTRL On
+
+192.168.006.100 192.168.006.001 255.255.255.000
+
+(static:192.168.006.100 192.168.006.001 255.255.255.000)
+Telnet
+
+SSH
+
+HTTPS
+
+LAN01 MAC
+
+LAN02 MAC
+
+0023
+
+Off
+
+Off
+
+6C:DF:FB:00:01:2D
+
+6C:DF:FB:00:01:21
+
+Domain Name
+controller.local
+================================================================
+
+2.3 Configure the CHAZY CONTROL rear panel GPIO direction
+API joggle
+SET GPIO [gpio] DIR IN/OUT
+description
+Configure the CHAZY CONTROL rear panel GPIO direction
+parameter
+
+description
+
+gpio
+
+1: GPIO1
+2: GPIO2
+3: GPIO3
+4: GPIO4
+
+IN
+
+The GPIO acts as the input function
+
+OUT
+
+The GPIO acts as the output function
+
+returned value
+
+description
+
+[SUCCESS]Set GPIO 01 as input port.
+
+The GPIO 1 is configured as an input mode
+
+[SUCCESS]Set GPIO 01 as output port.
+
+The GPIO 1 is configured as an output mode
+
+example
+TELNET Log in to the CHAZY CONTROL
+Configure GPIO 1 as an input mode, enter a command:
+SET GPIO 1 DIR IN
+return:
+[SUCCESS]Set GPIO 01 as input port.
+Configure GPIO 1 as the output mode, enter the command:
+SET GPIO 1 DIR OUT
+return:
+[SUCCESS]Set GPIO 01 as output port.
+
+9
+
+Chazy Control API Reference
+
+2.4 Configure the CHAZY CONTROL rear panel GPIO output level
+API joggle
+SET GPIO [gpio] LEVEL Low/High
+description
+With the GPIO output level of CHAZY CONTROL rear panel, this API only affects GPIO with output.
+parameter
+
+description
+
+gpio
+
+1: GPIO1
+2: GPIO2
+3: GPIO3
+4: GPIO4
+
+Low /High
+
+Low: output low level
+High: Output at a high level
+
+returned value
+
+description
+
+[SUCCESS]Set GPIO 01 output level 0.
+
+GPIO 1 output at low level
+
+[SUCCESS]Set GPIO 01 output level 1.
+
+The GPIO 1 is output at a high level
+
+example
+TELNET Log in to the CHAZY CONTROL
+Configure GPIO 1 output low level, input command:
+SET GPIO 1 LEVEL Low
+return:
+[SUCCESS]Set GPIO 01 output level 0.
+Configure GPIO 1 output high level, input command:
+SET GPIO 1 LEVEL High
+return:
+[SUCCESS]Set GPIO 01 output level 1.
+
+2.5 Obtain the CHAZY CONTROL rear panel GPIO input level
+API joggle
+GET GPIO [gpio] LEVEL
+description
+The GPIO input level of the rear panel of CHAZY CONTROL is obtained, and this API only acts on the
+GPIO with the input direction.
+parameter
+
+description
+
+gpio
+
+1: GPIO1
+2: GPIO2
+3: GPIO3
+4: GPIO4
+
+returned value
+
+description
+
+[SUCCESS]Get GPIO 01 real input level 1.
+
+The GPIO 1 acquisition input level is a high level
+
+example
+
+10
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Get the GPIO 1 input level, and enter the input command:
+GET GPIO 1 LEVEL
+return:
+[SUCCESS]Get GPIO 01 real input level 1.
+
+2.6 Get the GPIO status information of the CHAZY CONTROL rear panel
+API joggle
+GET GPIO [gpio] STATUS
+description
+Get the GPIO status information of the CHAZY CONTROL rear panel.
+parameter
+
+description
+
+gpio
+
+Optional parameter that obtaining all GPIO
+states when not specified
+1: GPIO1
+2: GPIO2
+3: GPIO3
+4: GPIO4
+
+returned value
+
+description
+
+Returns the GPIO status information
+example
+TELNET Log in to the CHAZY CONTROL
+Get the GPIO 1 status information and enter the command:
+GET GPIO 1 STATUS
+return:
+================================================================
+CHAZY CONTROL GPIO Info
+FW Version: 1.00.17
+GPIO
+
+DIR
+
+01
+
+In
+
+Set
+-
+
+Get
+1
+
+================================================================
+
+2.7 Set the CHAZY CONTROL serial port baudrate
+API joggle
+SET RS232BAUDRATE [a]
+description
+Set CHAZY CONTROL serial port port rate to a, and the factory default is 57600
+parameter
+
+description
+
+a
+
+[0:115200 1:57600, 2:38400, 3:19200, 4:9600]
+
+returned value
+
+description
+
+[SUCCESS]Set RS232 Baud Rate to 115200bps.
+
+Set the port rate to 57,600 successfully
+
+example
+11
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set serial port port rate to 115200, enter command:
+SET RS232BAUDRATE 0
+return:
+[SUCCESS]Set RS232 Baud Rate to 115200bps.
+Set the serial port port rate to 57600, enter the command:
+SET RS232BAUDRATE 1
+return:
+[SUCCESS]Set RS232 Baud Rate to 57600bps.
+
+2.8 Reset the CHAZY CONTROL system configuration
+API joggle
+SET RESET
+description
+Reset the system configuration information and Clear the equipment added to the system.
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+[SUCCESS]System will reset to default config, it
+
+The reset was successful
+
+will take about 40 seconds,
+and RS232 will disable during this time, please
+wait...
+example
+TELNET Log in to the CHAZY CONTROL
+Reset the system configuration, enter the command:
+SET RESET
+return:
+Sure to RESET system to default settings?Type "Yes" after next prompt to confirm...
+import yes
+return:
+[SUCCESS]System will reset to default config, it will take about 40 seconds,
+and RS232 will disable during this time, please wait...
+
+2.9 Reset the CHAZY CONTROL network configuration
+API joggle
+SET RESET NETWORK
+description
+Reset the CHAZY CONTROL network configuration information.
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+[SUCCESS]Network will reset to default config, it
+
+The reset was successful
+
+will take about 40 seconds,
+and RS232 will disable during this time, please
+12
+
+Chazy Control API Reference
+
+wait...
+example
+TELNET Log in to the CHAZY CONTROL
+Reset the system configuration, enter the command:
+SET RESET NETWORK
+return:
+Sure to RESET network config to default settings?Type "Yes" after next prompt to confirm...
+import yes
+return:
+[SUCCESS]Network will reset to default config, it will take about 40 seconds,
+and RS232 will disable during this time, please wait...
+
+2.10 Reset CHAZY CONTROL for all configurations
+API joggle
+SET RESET ALL
+description
+Reset CHAZY CONTROL all configuration information.
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+[SUCCESS]System and network will reset to
+
+The reset was successful
+
+default config, it will take about 40 seconds,
+and RS232 will disable during this time, please
+wait...
+example
+TELNET Log in to the CHAZY CONTROL
+Reset the system configuration, enter the command:
+SET RESET ALL
+return:
+Sure to RESET system and network to default settings?Type "Yes" after next prompt to confirm...
+import yes
+return:
+[SUCCESS]System and network will reset to default config, it will take about 40 seconds,
+and RS232 will disable during this time, please wait...
+
+2.11 Restart the CHAZY CONTROL
+API joggle
+SET REBOOT
+description
+Restart the CHAZY CONTROL
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+System will restart, please wait...
+
+Equipment restart
+
+example
+13
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET RE BOOT
+return:
+System will restart, please wait...
+
+14
+
+Chazy Control API Reference
+
+3. The RX control module API reference
+3.1 Set the RXID number
+API joggle
+SET DEC [dec] ID [id]
+description
+Set the RXID number.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+
+id
+
+[001... 762]: Target ID No
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 ID to 760.
+
+Set the RX1 ID number to 760
+
+[ERROR]Decoder 100 does not exist.
+
+RX 100 Does not exist
+
+example
+TELNET Log in to the CHAZY CONTROL
+RX1 ID Set to 760, enter the command:
+SET DEC 1 ID 760
+return:
+[SUCCESS]Set decoder 001 ID to 760.
+
+3.2 Set the RX name
+API joggle
+SET DEC [dec] NAME [name]
+description
+Set the RX name.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+
+name
+
+Name, with a maximum length of 16 bytes
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 name:TEST1.
+
+Set the RX 1 name to be the TEST 1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 alias to TEST 1, enter the command:
+SET DEC 1 NAME TEST1
+return:
+[SUCCESS]Set decoder 001 name:TEST1.
+
+3.3 Set RX routing
+API joggle
+SET DEC [dec] SWITCH [enc] ALL
+description
+Set up the RX VIDEO / AUDIO / IR / RS-232 / USB / CEC routing
+parameter
+
+description
+15
+
+Chazy Control API Reference
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+enc
+
+[001...762]: TXID number
+0: Cancel the route
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 from encoder 003.
+
+Set the RX1 VIDEO / AUDIO / IR / RS-232 / USB /
+CEC signal to route to TX 3
+
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET DEC 1 SWITCH 3 ALL
+return:
+[SUCCESS]Set decoder 001 from encoder 003.
+input command:
+SET DEC 1 SWITCH 0 ALL
+return:
+[SUCCESS]Set decoder 001 VARSUC unselect encoder.
+
+3.4 Lock up the RX VIDEO route
+API joggle
+SET DEC [dec] SWITCH [enc] VIDEO
+description
+Lock in the RX VIDEO signal routing.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+enc
+
+[001...762]: TXID number
+0: Unlock
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 video from encoder
+
+Set the RX 1 lock video signal to route to TX 3
+
+003.
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET DEC 1 SWITCH 3 VIDEO
+return:
+[SUCCESS]Set decoder 001 video from encoder 003.
+input command:
+SET DEC 1 SWITCH 0 VIDEO
+return:
+[SUCCESS]Set decoder 001 unlocking video signals.
+
+16
+
+Chazy Control API Reference
+
+3.5 Lock up the RX AUDIO route
+API joggle
+SET DEC [dec] SWITCH [enc] AUDIO
+description
+Lock in the RX AUDIO signal routing.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+enc
+
+[001...762]: TXID number
+0: Unlock
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 audio from encoder
+
+Set the RX 1 lock audio signal to route to the TX
+
+003.
+
+3
+
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET DEC 1 SWITCH 3 AUDIO
+return:
+[SUCCESS]Set decoder 001 audio from encoder 003.
+input command:
+SET DEC 1 SWITCH 0 AUDIO
+return:
+[SUCCESS]Set decoder 001 unlocking audio signals.
+
+3.6 Lock up the RX IR route
+API joggle
+SET DEC [dec] SWITCH [enc] IR
+description
+Locking on the RXIR signal routing.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+enc
+
+[001...762]: TXID number
+0: Unlock
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 IR from encoder
+
+Set the RX 1 lock IR signal to route to TX 3
+
+003.
+example
+
+17
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET DEC 1 SWITCH 3 IR
+return:
+[SUCCESS]Set decoder 001 IR from encoder 003.
+input command:
+SET DEC 1 SWITCH 0 IR
+return:
+[SUCCESS]Set decoder 001 unlocking IR signals.
+
+3.7 Lock on the RX RS-232 routing
+API joggle
+SET DEC [dec] SWITCH [enc] RS232
+description
+Locking the RXRS-232 signal routing.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+enc
+
+[001...762]: TXID number
+0: Unlock
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 RS232 from encoder
+
+Set the RX 1 lock RS-232 signal to route to TX 3
+
+003.
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET DEC 1 SWITCH 3 RS232
+return:
+[SUCCESS]Set decoder 001 RS232 from encoder 003.
+input command:
+SET DEC 1 SWITCH 0 RS232
+return:
+[SUCCESS]Set decoder 001 unlocking RS232 signals.
+
+3.8 Lock up the RX USB route
+API joggle
+SET DEC [dec] SWITCH [enc] USB
+description
+Lock in the RX USB signal routing.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+18
+
+Chazy Control API Reference
+
+enc
+
+[001...762]: TXID number
+0: Unlock
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 USB from encoder
+
+Set the RX 1 lock USB signals to route to TX 3
+
+003.
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET DEC 1 SWITCH 3 USB
+return:
+[SUCCESS]Set decoder 001 USB from encoder 003.
+input command:
+SET DEC 1 SWITCH 0 USB
+return:
+[SUCCESS]Set decoder 001 unlocking USB signals.
+
+3.9 Lock up the RX CEC route
+API joggle
+SET DEC [dec] SWITCH [enc] CEC
+description
+Lock in the RX CEC signal routing.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+enc
+
+[001...762]: TXID number
+0: Unlock
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 CEC from encoder
+
+Set the RX 1 lock CEC signal to route to TX 3
+
+003.
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET DEC 1 SWITCH 3 CEC
+return:
+[SUCCESS]Set decoder 001 CEC from encoder 003.
+input command:
+SET DEC 1 SWITCH 0 CEC
+return:
+[SUCCESS]Set decoder 001 unlocking CEC signals.
+
+3.10 Control that the RX power LED flashes
+API joggle
+19
+
+Chazy Control API Reference
+
+SET DEC [dec] LED ON/OFF
+SET DEC [dec] LED ON 90
+description
+Control that the RX power LED flashes.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+ON
+
+The power LED flashes
+
+OFF
+
+The power LED is often on
+
+ON 90
+
+The power light flashes for 90 seconds
+
+returned value
+
+description
+
+[SUCCESS]Flash power LED on decoder 001.
+
+Flash the RX 1 power LED
+
+example
+TELNET Log in to the CHAZY CONTROL
+Flash the power light, enter the command:
+SET DEC 1 LED
+
+ON
+
+return:
+[SUCCESS]Flash power LED on decoder 001.
+The power light is always on, input command:
+SET DEC 1 LED
+
+O FF
+
+return:
+[SUCCESS]Disable flash power LED on decoder 001.
+Flash the power LED for 90 seconds, enter the command:
+SET DEC 1 LED
+
+ON 90
+
+return:
+[SUCCESS]Flash power LED on decoder 001 and keep 90 seconds.
+
+3.11 Set up the RX OSD switch
+API joggle
+SET DEC [dec] OUTPUT OSD ON/OFF
+description
+switch RXOSD
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+ON
+
+open OSD
+
+OFF
+
+close OSD
+
+returned value
+
+description
+
+[SUCCESS]Show OSD on decoder 001.
+
+open OSD
+
+example
+
+20
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Open the OSD and enter the command:
+SET DEC 1 OUTPUT OSD ON
+return:
+[SUCCESS]Show OSD on decoder 001.
+Close the OSD and enter the command:
+SET DEC 1 OUTPUT OSD O FF
+return:
+[SUCCESS]Hide OSD on decoder 001.
+
+3.12 Set up the RX HDMI OUTPUT switch
+API joggle
+SET DEC [dec] OUTPUT ON/OFF
+description
+Switch the switch RX HDMI OUTPUT.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+ON
+
+Open the HDMI OUTPUT
+
+OFF
+
+Turn off the HDMI OUTPUT
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 output on.
+
+Open the HDMI OUTPUT
+
+example
+TELNET Log in to the CHAZY CONTROL
+Open the HDMI OUTPUT, and enter the command:
+SET DEC 1 OUTPUT ON
+return:
+[SUCCESS]Set decoder 001 output on.
+Close the HDMI OUTPUT and enter the command:
+SET DEC 1 OUTPUT O FF
+return:
+[SUCCESS]Set decoder 001 output off.
+
+3.13 Set up the RX HDMI OUTPUT MUTE
+API joggle
+SET DEC [dec] OUTPUT MUTE ON/OFF
+description
+Set up the RX HDMI OUTPUT MUTE (black screen).
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+ON
+
+Open the HDMI OUTPUT MUTE
+21
+
+Chazy Control API Reference
+
+OFF
+
+Turn off the HDMI OUTPUT MUTE
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 output
+
+mute on.
+
+Open the HDMI OUTPUT MUTE
+
+example
+TELNET Log in to the CHAZY CONTROL
+Open the HDMI OUTPUT MUTE, and enter the command:
+SET DEC 1 OUTPUT MUTE ON
+return:
+[SUCCESS]Set decoder 001 output
+
+mute on.
+
+Close the HDMI OUTPUT MUTE and enter the command:
+SET DEC 1 OUTPUT MUTE O FF
+return:
+[SUCCESS]Set decoder 001 output
+
+mute off.
+
+3.14 Set the RX output resolution
+API joggle
+SET DEC [dec] OUTPUT RESOLUTION [res]
+description
+Set the RX output resolution to res
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+res
+
+00: Bypass
+01: 1080p@50
+02: 1080p@60
+03: 720p@50
+04: 720p@60
+05: 2160p@24
+06: 2160p@30
+07: 2160p@50
+08: 2160p@60
+09: 1280x1024@60
+10: 1360x768@60
+11: 1440x900@60
+12: 1680x1050@60
+13: 1920x1200@60
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 resolution to
+
+Set the RX 1 output resolution to 1080P60
+
+1080p@60Hz.
+example
+
+22
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 output resolution to 1080P60, enter the command:
+SET DEC 1 OUTPUT RESOLUTION 2
+return:
+[SUCCESS]Set decoder 001 resolution to 1080p@60Hz.
+
+3.15 Set the RX screen to rotate
+API joggle
+SET DEC [dec] OUTPUT ROTATE [rtt]
+description
+Set the RX screen to rotate.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+rtt
+
+0:0°
+1:90°
+2:180°
+3:270°
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 rotate 90 degree.
+
+Set the RX 1 screen to flip by 90 degrees
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set RX 1 screen flip 90 degrees, enter command:
+SET DEC 1 OUTPUT ROTATE 1
+return:
+[SUCCESS]Set decoder 001 rotate 90 degree.
+
+3.16 Set up the RX, and the screen is flipped
+API joggle
+SET DEC [dec] OUTPUT FLIP HOR/VER/OFF
+description
+Set the RX screen to flip over.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+HOR
+
+flip horizontal
+
+VER
+
+flip vertical
+
+OFF
+
+Normal display
+
+returned value
+[SUCCESS]Set decoder 001 flip done.
+
+Set the RX 1 screen to flip over
+
+example
+
+23
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 screen to flip horizontally and enter the command:
+SET DEC 1 OUTPUT FLIP HOR
+return:
+[SUCCESS]Set decoder 001 flip done.
+
+3.17 Set the RX IR level
+API joggle
+SET DEC [dec] IR VOL 5V/12V
+description
+Set the RXIR level.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+5V
+
+Use a 5V IR wire line
+
+12V
+
+Use a 12V IR wire line
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 IR voltage 5V.
+
+Set RX 1 to use 5V IR wire
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 to use a 5V IR wire, enter the command:
+SET DEC 1 IR VOL 5V
+return:
+[SUCCESS]Set decoder 001 IR voltage 5V.
+
+3.18 Set the RX IO level
+API joggle
+SET DEC [dec] IO VOL 5V/12V
+description
+Set the RXIO level.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+5V
+
+The IO level was set at 5V
+
+12V
+
+The IO level was 12V
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 io voltage 5V.
+
+Set the RX 1 IO level to 5V
+
+example
+
+24
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 IO level to 5V, and enter the command:
+SET DEC 1 I O
+
+VOL 5V
+
+return:
+[SUCCESS]Set decoder 001 io
+
+voltage 5V.
+
+3.19 Set the RX IO direction
+API joggle
+SET DEC [dec] IO 1 DIR IN/OUT
+SET DEC [dec] IO 2 DIR IN/OUT
+description
+Set the RXIO direction.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+IN
+
+The IO is set as the input
+
+OUT
+
+The IO is set to the output
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 IO 1 as input port.
+
+Set the RX 1 IO 1 as the input
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set RX 1 IO 1 as input, enter a command:
+SET DEC 1 IO 1 DIR IN
+return:
+[SUCCESS]Set decoder 001 IO 1 as input port.
+
+3.20 Set the RX IO output level
+API joggle
+SET DEC [dec] IO 1 OUT 0/1
+SET DEC [dec] IO 2 OUT 0/1
+description
+The RXIO output level is set and is only valid if the IO direction is set to the output.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+0
+
+IO output low level
+
+1
+
+IO output at a high level
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 IO 1 output level 0.
+
+Set the RX 1 IO 1 output low level
+
+example
+
+25
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 IO 1 output low level, enter the command:
+SET DEC 1 IO 1 OUT 0
+return:
+[SUCCESS]Set decoder 001 IO 1 output level 0.
+
+3.21 Set up the RX Relay switch
+API joggle
+SET DEC [dec] RELAY 1 OPEN/CLOSE
+SET DEC [dec] RELAY 2 OPEN/CLOSE
+description
+Set up the RX Relay switch.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+OPEN
+
+Relay break
+
+CLOSE
+
+Relay close
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 Relay 1 close.
+
+Set the RX 1 Relay 1 to close
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 Relay 1 to close, and enter the command:
+SET DEC 1 RELAY 1 CLOSE
+return:
+[SUCCESS]Set decoder 001 Relay 1 close.
+
+3.22 Set the RX image output mode
+API joggle
+SET DEC [dec] MODE MX/VW
+description
+Set the RX image output mode and only the decoder in Video Wall is valid.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+MX
+
+MX Mode output (display all images)
+
+VW
+
+VW Mode output (display partial images)
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 to matrix mode.
+
+Set up the RX 1 MX mode output
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 MX mode output, enter the command:
+SET DEC 1 MODE MX
+26
+
+Chazy Control API Reference
+
+return:
+[SUCCESS]Set decoder 001 to matrix mode.
+
+3.23 Set up the RX CEC / ARC switch
+API joggle
+SET DEC [dec] SAC ARC/CEC/OFF
+description
+Switch RX C EC / ARC switch, open the CEC by default.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+ARC
+
+open ARC
+
+CEC
+
+open CEC
+
+OFF
+
+Close the CEC and the ARC
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 select ARC, the
+
+Set the RX 1 to turn on the ARC
+
+decoder will reboot if setting changed.
+example
+TELNET Log in to the CHAZY CONTROL
+Set RX 1 to turn on ARC and enter the command:
+SET DEC 1 SAC ARC
+return:
+[SUCCESS]Set decoder 001 select ARC, the decoder will reboot if setting changed.
+
+3.24 Set up the RX audio-return
+API joggle
+SET DEC [dec] ARP ARC/SPDIF
+description
+Set the RX audio return, only when RX turns on ARC.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+ARC
+
+Audio goes back to the ARC signal
+
+SPDIF
+
+Audio goes back to the S / PDIF signal
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 audio return path to
+
+Set the RX 1 audio return source to be the ARC
+
+ARC.
+example
+
+27
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 audio return source to ARC, enter the command:
+SET DEC 1 ARP ARC
+return:
+[SUCCESS]Set decoder 001 audio return path to ARC.
+
+3.25 Set the RX eARC to downgrade to the ARC
+API joggle
+SET DEC [dec] EARC DOWNGRADE ON/OFF
+description
+Set RX eARC to ARC, only when RX turns on ARC.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+ON
+
+Audio goes back to the ARC signal
+
+OFF
+
+Audio goes back to the eARC signal
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 eARC downgrade on.
+
+Set the RX 1 audio return source to be the ARC
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 audio return source to ARC, enter the command:
+SET DEC 1 EARC DOWNGRADE ON
+return:
+Set decoder 001 eARC downgrade on.
+
+3.26 Set the RX, copper/fiber mode
+API joggle
+SET DEC [dec] NET FIBER/COPPER
+description
+Set RX electric mode, default to electrical port.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+FIBER
+
+The network card is in light mode
+
+COPPER
+
+The network card is electric mode
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 network interface to
+
+Set the RX 1 network card to the electric mode
+
+Copper.
+example
+
+28
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 network card to the electric mode, enter the command:
+SET DEC 1 NET COPPER
+return:
+[SUCCESS]Set decoder 001 network interface to Copper.
+
+3.27 Set up the RX USB disk / camera switch
+API joggle
+SET DEC [dec] USB DATA ON/OFF
+description
+Set the RX USB disk / camera switch, the USB route of RX will only open KVM devices by default, and
+USB DATA ON is set to open USB disk / camera.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+ON
+
+Turn on the USB disk / camera
+
+OFF
+
+Turn off the USB disk / camera
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 usb data on.
+
+Turn on the RX1 USB disk / camera
+
+example
+TELNET Log in to the CHAZY CONTROL
+Open RX1 USB disk / camera and enter the command:
+SET DEC 1 USB DATA ON
+return:
+[SUCCESS]Set decoder 001 usb data on.
+
+3.28 Set the RX multicast mode
+API joggle
+SET DEC [dec] MULTICAST ON/OFF
+description
+Set RX multicast mode on or off, default to off.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID No
+0: All RX
+
+ON
+
+Set RX multicast mode on
+
+OFF
+
+Set RX multicast mode off
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 multicast on.
+
+Set the RX 1 multicast on
+
+example
+
+29
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 multicast on, enter the command:
+SET DEC 1 MULTICAST ON
+return:
+[SUCCESS]Set decoder 001 multicast on.
+
+3.29 Set the RX dante bridge
+API joggle
+SET DEC [dec] DANTE BRIDGE ON/OFF
+description
+Set RX dante bridge on or off, default to off.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID No
+0: All RX
+
+ON
+
+Set RX dante bridge on
+
+OFF
+
+Set RX dante bridge off
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 dante bridge on.
+
+Set the RX 1 dante bridge on
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 dante bridge on, enter the command:
+SET DEC 1 DANTE BRIDGE ON
+return:
+[SUCCESS]Set decoder 001 dante bridge on.
+
+3.30 Set the RX dante vlan
+API joggle
+SET DEC [dec] DANTE VLAN ON/OFF
+description
+Set RX dante vlan on or off, default to off.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID No
+0: All RX
+
+ON
+
+Set RX dante vlan on
+
+OFF
+
+Set RX dante vlan off
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 dante VLAN on.
+
+Set the RX 1 dante vlan on
+
+example
+
+30
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 dante vlan on, enter the command:
+SET DEC 1 DANTE VLAN ON
+return:
+[SUCCESS]Set decoder 001 dante VLAN on.
+
+3.31 Set the RX dante vlan tag
+API joggle
+SET DEC [dec] DANTE VLAN TAG [tag]
+description
+Set RX dante vlan tag, default to 2.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID No
+0: All RX
+
+tag
+
+[1...4095]: VLAN tag
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 dante VLAN tag to 2.
+
+Set the RX 1 dante vlan tag to 2
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the RX 1 dante vlan on, enter the command:
+SET DEC 1 DANTE VLAN TAG 2
+return:
+[SUCCESS]Set decoder 001 dante VLAN tag to 2.
+
+3.32 Send CEC data to RX (Guest mode)
+API joggle
+SET DEC [dec] CEC SEND xx xx
+description
+Send CEC data to RX (Guest mode)
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+xx xx
+
+16 decimal CEC instruction code
+
+returned value
+
+description
+
+[SUCCESS]Send CEC data to decoder 001 done.
+
+The CEC instruction was sent successfully
+
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET DEC 1 CEC SEND 4F 36
+return:
+[SUCCESS]Send CEC data to decoder 001 done.
+
+31
+
+Chazy Control API Reference
+
+3.33 Send IR data to RX (Guest mode)
+API joggle
+SET DEC [dec] IR SEND xx xx
+
+xx xx
+
+description
+Send IR data to RX (Guest mode)
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+xx xx
+
+xx xx
+
+16 decimal IR instruction code, support CCF format
+
+returned value
+
+description
+
+[SUCCESS]Send IR data to decoder 001 done.
+
+Send the IR command successfully
+
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET DEC 1 IR SEND
+0000006700000022015600ab001600600016006000160060001600160016006000160016001600600016001
+600160016001600160016001600160060001600160016006000160016001600600016006000160016001600
+600016001600160016001600600016006000160060001600160016006000160016001600600016006000160
+016001600160016001600160593
+return:
+[SUCCESS]Send IR data to decoder 001 done.
+
+3.34 Set the RX serial port parameters
+API joggle
+SET DEC [dec] GUEST ON/OFF BR [br] BIT [bit]
+description
+Set the RX serial port parameters
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+ON
+
+Open the serial port to Guest mode
+
+OFF
+
+Close the serial port, Guest mode
+
+br
+
+[0:300 1:600 2:1200 3:2400 4:4800 5:9600]
+[6:19200 7:38400 8:57600 9:115200]
+
+bit
+
+Data Bits + Parity + Stop Bits
+example: 8n1
+Data Bits=[5...8], Parity=[n o e], Stop Bits=[1..2]
+
+returned value
+
+description
+
+[SUCCESS]Set serial guest mode config done.
+
+The RX Serial port parameters was set
+successfully
+
+example
+32
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set RX 1 open serial port Guest mode, port rate 115200,8-bit data bit, no check bit, 1-bit stop bit, input
+command:
+SET DEC 1 GUEST ON BR 9 BIT 8N1
+return:
+[SUCCESS]Set serial guest mode config done.
+
+3.35 Start the RX serial port Guest mode
+API joggle
+SET DEC [dec] GUEST
+description
+Start RX serial port Guest mode and is only valid if the serial port parameter is set to GUEST ON
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+
+returned value
+
+description
+
+not have
+example
+TELNET Log in to the CHAZY CONTROL
+Start the RX 1 serial port Guest mode and enter the command:
+SET DEC 1 GUEST
+
+3.36 Exit the RX serial port, Guest mode
+API joggle
+EXITGUEST
+description
+After starting the RX serial port Guest mode, send the EXITGUEST to exit the Guest mode
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+not have
+example
+TELNET Log in to the CHAZY CONTROL
+Exit the RX 1 serial port Guest mode and enter the command:
+EXITGUEST
+
+3.37 Set up the RXIP mode
+API joggle
+33
+
+Chazy Control API Reference
+
+SET DEC [dec] IPMODE DHCP/STATIC
+description
+Set up the IP mode for the RX
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+DHCP
+
+trends IP
+
+STATIC
+
+static state IP
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 ip mode to dhcp.
+
+The setting is successful and needs to restart
+
+Use "SET DEC xx NETWORK REBOOT" command
+
+the RX to take effect
+
+to apply new config!!!
+example
+TELNET Log in to the CHAZY CONTROL
+Set RX 1 to Dynamic IP mode, enter the command:
+SET DEC 1 IPMODE DHCP
+return:
+[SUCCESS]Set encoder 001 ip mode to dhcp.
+Use "SET DEC xx NETWORK REBOOT" command to apply new config!!!
+
+3.38 Set up the RX IP address
+API joggle
+SET DEC [dec] STATIC IP [ip]
+description
+Set the IP address for RX, only valid when IPMODE is STATIC.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+
+ip
+
+IP addresses, such as 169.254.10.10
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 IP address to
+
+The setting is successful and needs to restart
+
+169.254.020.006.
+
+the RX to take effect
+
+Use "SET DEC xx NETWORK REBOOT" command
+to apply new config!!!
+example
+TELNET Log in to the CHAZY CONTROL
+Set the IP of RX 1 to 169.254.20.6, enter the command:
+SET DEC 1 STATIC IP 169.254.20.6
+return:
+[SUCCESS]Set decoder 001 IP address to 169.254.020.006.
+Use "SET DEC xx NETWORK REBOOT" command to apply new config!!!
+
+34
+
+Chazy Control API Reference
+
+3.39 Sets the RX subnet mask
+API joggle
+SET DEC [dec] STATIC MASK [mask]
+description
+Set the subnet mask for RX, only valid when IPMODE is STATIC.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+mask
+
+Subnet mask, such as 255.255.0.0
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 subnet mask address
+
+The setting is successful and needs to restart
+
+to 255.255.000.000.
+
+the RX to take effect
+
+Use "SET DEC xx NETWORK REBOOT" command
+to apply new config!!!
+example
+TELNET Log in to the CHAZY CONTROL
+Set the subnet mask of RX 1 to 255.255.0.0, enter the command:
+SET DEC 1 STATIC MASK 255.255.0.0
+return:
+[SUCCESS]Set encoder 001 subnet mask address to 255.255.000.000.
+Use "SET DEC xx NETWORK REBOOT" command to apply new config!!!
+
+3.40 Set up the RX gateway address
+API joggle
+SET DEC [dec] STATIC GATEWAY [gw]
+description
+Sets the gateway address of RX and is only valid when IPMODE is STATIC.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+gw
+
+Gateway address, such as 169.254.0.1
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 gateway address to
+
+The setting is successful and needs to restart
+
+169.254.000.001.
+
+the RX to take effect
+
+Use "SET DEC xx NETWORK REBOOT" command
+to apply new config!!!
+example
+TELNET Log in to the CHAZY CONTROL
+Set the gateway address of RX to 169.254.0.1, enter the command:
+SET DEC 1 STATIC GATEWAY 169.254.0.1
+return:
+[SUCCESS]Set encoder 001 gateway address to 169.254.000.001.
+35
+
+Chazy Control API Reference
+
+Use "SET DEC xx NETWORK REBOOT" command to apply new config!!!
+
+3.41 Set up the RX network card to restart
+API joggle
+SET DEC [dec] NETWORK REBOOT
+description
+Set up the network restart for RX
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 reboot and apply all
+
+The setting is successful and needs to restart
+
+the new config.
+
+the RX to take effect
+
+example
+TELNET Log in to the CHAZY CONTROL
+Restart the RX 1 network card and enter the command:
+SET DEC 1 NETWORK REBOOT
+return:
+[SUCCESS]Set decoder 001 reboot and apply all the new config.
+
+3.42 Remove the RX from the system
+API joggle
+SET DEC [dec] DELETE
+description
+delete RX
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+returned value
+
+description
+
+[SUCCESS]Delete decoder 001 done.
+
+Delete RX 1 successfully
+
+example
+TELNET Log in to the CHAZY CONTROL
+Delete RX 1, enter the command:
+SET DEC 1 DELETE
+return:
+[SUCCESS]Delete decoder 001 done.
+
+36
+
+Chazy Control API Reference
+
+3.43 restart RX
+API joggle
+SET DEC [dec] REBOOT
+description
+restart RX
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 reboot and apply all
+
+Restart success
+
+the new config.
+example
+TELNET Log in to the CHAZY CONTROL
+Restart RX 1, enter the command:
+SET DEC 1 REBOOT
+return:
+[SUCCESS]Set decoder 001 reboot and apply all the new config.
+
+3.44 reset RX
+API joggle
+SET DEC [dec] RESET
+description
+reset RX
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+returned value
+
+description
+
+[SUCCESS]Set decoder 001 reset to default
+
+The reset was successful
+
+setting.
+example
+TELNET Log in to the CHAZY CONTROL
+Reset the RX 1, enter the command:
+SET DEC 1 RESET
+return:
+[SUCCESS]Set decoder 001 reset to default setting.
+
+3.45 Get the RX status information
+API joggle
+GET DEC [dec] STATUS
+description
+37
+
+Chazy Control API Reference
+
+To obtain the status information of RX, to obtain the status information of all RX without the
+parameter dec, namely, GET DEC STATUS is the same as GET DEC 0 STATUS.
+parameter
+
+description
+
+dec
+
+[001... 762]: RXID number
+0: All RX
+
+returned value
+
+description
+
+Returns the RX status information
+
+Include the version number, network information
+and other states
+
+example
+TELNET Log in to the CHAZY CONTROL
+Get the RX 1 status information, and enter the command:
+GET DEC 1 STATUS
+return:
+================================================================
+CHAZY CONTROL Decoder Info
+FW Version: 1.00.17
+ID
+
+Type
+
+Net
+
+HPD
+
+Ver
+
+001
+
+Gen 2 On
+
+Off
+
+3.01.17 MX
+
+>>Fix
+>>Sel
+
+Mode
+
+Res
+
+Rotate Name
+
+00
+
+0
+
+Decoder 001
+
+Vid /Aud /IR /Ser /USB /CEC
+
+MCast Video Mute
+
+000 /000 /000 /000 /000 /000
+
+On
+
+On
+
+Off
+
+Vid /Aud /IR /Ser /USB /CEC
+013 /013 /013 /013 /013 /013
+
+>>SAC
+
+OSP
+
+SGEn/Br/Bit
+
+ARC
+
+4
+
+Off /9 /8n1
+
+>>Pin
+
+IOVOL/IODIR/IODAT IRVOL RLY
+
+(1)
+
+12
+
+Out
+
+0
+
+(2)
+
+12
+
+Out
+
+0
+
+>>IM
+
+12
+
+PHY
+
+Open Copper
+Open
+
+MAC
+
+Static 6C:DF:FB:01:1A:CE
+>>IP
+
+GW
+
+SM
+
+169.254.020.001 169.254.001.001 255.255.000.000
+================================================================
+
+3.46 Set the RX preset IP mode
+API joggle
+SET DEC PRESET IPMODE [mode]
+description
+Set the IP mode of RX preset and assign the IP of RX preset when RX is added to the system
+parameter
+
+description
+
+mode
+
+0:AUTOIP
+1:DHCP
+2:STATIC
+38
+
+Chazy Control API Reference
+
+returned value
+
+description
+
+[SUCCESS]Set decoder preset IP to static mode.
+
+Set successfully, the RX preset IP mode is static
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the RX preset IP mode to static, enter the command:
+SET DEC PRESET IPMODE 2
+return:
+[SUCCESS]Set decoder preset IP to static mode.
+
+3.47 Sets the RX preset IP start address
+API joggle
+SET DEC PRESET START IP [ip]
+description
+Sets the IP start address for the RX preset
+parameter
+
+description
+
+ip
+
+IP addresses, such as 169.254.10.10
+
+returned value
+
+description
+
+[SUCCESS]Set decoder preset IP min
+
+Set the IP start address for the RX preset to
+
+172.016.010.001.
+
+172.16.10.1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the IP start address for RX preset to 172.16.10.1, enter the command:
+SET DEC PRESET START IP 172.16.10.1
+return:
+[SUCCESS]Set decoder preset IP min 172.016.010.001.
+
+3.48 Set the RX preset IP end address
+API joggle
+SET DEC PRESET END IP [ip]
+description
+Set the IP end address of RX preset. The end address should be greater than the starting address
+and in the same network segment.
+parameter
+
+description
+
+ip
+
+IP addresses, such as 169.254.20.10
+
+returned value
+
+description
+
+[SUCCESS]Set decoder preset IP max
+
+Set the IP end address for the RX preset to
+
+172.016.010.200.
+
+172.16.10.200
+
+example
+
+39
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the IP end address of the RX preset to 172.16.10.200, enter the command:
+SET DEC PRESET END IP 172.16.10.200
+return:
+[SUCCESS]Set decoder preset IP max 172.016.010.200.
+
+3.49 Sets the RX preset subnet mask
+API joggle
+SET DEC PRESET SM [mask]
+description
+Set the subnet mask for the RX preset
+parameter
+
+description
+
+mask
+
+Subnet mask, such as 255.255.0.0
+
+returned value
+
+description
+
+[SUCCESS]Set decoder preset netmask
+
+Set the subnet mask for the RX preset to
+
+255.255.000.000.
+
+255.255.0.0
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the subnet mask for the RX preset to 255.255.0.0, enter the command:
+SET DEC PRESET SM 255.255.0.0
+return:
+[SUCCESS]Set decoder preset netmask 255.255.000.000.
+
+3.50 Set the RX preset gateway address
+API joggle
+SET DEC PRESET GW [gw]
+description
+Set the gateway address for the RX preset
+parameter
+
+description
+
+gw
+
+Gateway address, such as 169.254.0.1
+
+returned value
+
+description
+
+[SUCCESS]Set decoder preset gateway
+
+Set the gateway address for the RX preset to
+
+172.016.010.001.
+
+172.16.10.1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the gateway address of the RX preset to 172.16.10.1, enter the command:
+SET DEC PRESET GW 172.16.10.1
+return:
+[SUCCESS]Set decoder preset gateway 172.016.010.001.
+
+40
+
+Chazy Control API Reference
+
+3.51 Save the RX preset configuration
+API joggle
+SET DEC PRESET APPLY
+description
+Save the preset configuration of RX, and after the preset IP mode above is set, you need to call
+APPLY to save it.
+parameter
+
+description
+
+returned value
+
+description
+
+[SUCCESS]Set decoder preset IP done.
+
+Saving the RX preset configuration is complete
+
+example
+TELNET Log in to the CHAZY CONTROL
+Save the RX preset configuration, and enter the command:
+SET DEC PRESET APPLY
+return:
+[SUCCESS]Set decoder preset IP done.
+
+41
+
+Chazy Control API Reference
+
+4. The TX control module API reference
+4.1 Set the TXID number
+API joggle
+SET ENC [enc ] ID [id]
+description
+Set the TXID number.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+
+id
+
+[001... 762]: Target ID No
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 ID to 760.
+
+Set the TX 1 ID number to 760
+
+[ERROR]Enc oder 100 does not exist.
+
+The TX 100 does not exist
+
+example
+TELNET Log in to the CHAZY CONTROL
+TX 1 ID Set to 760, enter the command:
+SET ENC 1 ID 760
+return:
+[SUCCESS]Set enc oder 001 ID to 760.
+
+4.2 Set the TX name
+API joggle
+SET ENC [enc ] NAME [name]
+description
+Set the TX name.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+
+name
+
+Name, with a maximum length of 16 bytes
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 name:TEST1.
+
+Set the TX 1 name to be the TEST 1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the TX 1 alias to TEST 1, enter the command:
+SET ENC 1 NAME TEST1
+return:
+[SUCCESS]Set enc oder 001 name:TEST1.
+
+4.3 Lock up the TX ARC route
+API joggle
+SET ENC [enc] SWITCH [dec] ARC
+description
+42
+
+Chazy Control API Reference
+
+Lock in the TX ARC signal routing.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+dec
+
+[001...762]: R X ID No
+0: Unlock
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 ARC select decoder
+
+Set the TX 1 lock ARC signal routing to RX 3
+
+003.
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET ENC 1 SWITCH 3 ARC
+return:
+[SUCCESS]Set encoder 001 ARC select decoder 003.
+input command:
+SET ENC 1 SWITCH 0 ARC
+return:
+[SUCCESS]Set encoder 001 ARC unselect input.
+
+4.4 The control TX power LED flashes
+API joggle
+SET ENC [enc ] LED ON/OFF
+SET ENC [enc ] LED ON 90
+description
+The control TX power LED flashes.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+ON
+
+The power LED flashes
+
+OFF
+
+The power LED is often on
+
+ON 90
+
+The power light flashes for 90 seconds
+
+returned value
+
+description
+
+[SUCCESS]Flash power LED on enc oder 001.
+
+Bthe TX 1 power LED
+
+example
+TELNET Log in to the CHAZY CONTROL
+Flash the power light, enter the command:
+SET ENC 1 LED
+
+ON
+
+return:
+[SUCCESS]Flash power LED on enc oder 001.
+The power light is always on, input command:
+SET ENC 1 LED
+
+O FF
+
+return:
+43
+
+Chazy Control API Reference
+
+[SUCCESS]Disable flash power LED on enc oder 001.
+Flash the power LED for 90 seconds, enter the command:
+SET ENC 1 LED
+
+ON 90
+
+return:
+[SUCCESS]Flash power LED on enc oder 001 and keep 90 seconds.
+
+4.5 Set up the TX audio source
+API joggle
+SET ENC [enc] AUDIO INPUT HDMI/ANA
+description
+Set up the TX audio source.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+HDMI
+
+Audio is from the HDMI IN
+
+ANA
+
+Audio is from the analog input AUDIO IN L / R
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 audio select hdmi.
+
+Set the TX 1 audio source to be the HDMI
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the TX 1 audio source to HDMI, enter the command:
+SET ENC 1 AUDIO INPUT HDMI
+return:
+[SUCCESS]Set encoder 001 audio select hdmi.
+
+4.6 Set up the TX EDID
+API joggle
+SET ENC [enc] EDID DEFAULT [edid]
+description
+Set up the TX EDID
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+edid
+
+00: 1080P,Stereo Audio 2.0 SDR
+01: 1080P,Dolby/DTS 5.1 SDR
+02: 1080P,HD Audio 7.1 SDR
+03: 1080I,Stereo Audio 2.0 SDR
+04: 1080I,Dolby/DTS 5.1 SDR
+05: 1080I,HD Audio 7.1 SDR
+06: 3D,Stereo Audio 2.0 SDR
+07: 3D,Dolby/DTS 5.1 SDR
+08: 3D,HD Audio 7.1 SDR
+44
+
+Chazy Control API Reference
+
+09: 4K2K30_444,Stereo Audio 2.0 SDR
+10: 4K2K30_444,Dolby/DTS 5.1 SDR
+11: 4K2K30_444,HD Audio 7.1 SDR
+12: 4K2K60_420,Stereo Audio 2.0 SDR (10/12-bit)
+13: 4K2K60_420,Dolby/DTS 5.1 SDR (10/12-bit)
+14: 4K2K60_420,HD Audio 7.1 SDR (10/12-bit)
+15: 4K2K60_444,Stereo Audio 2.0 SDR (10/12-bit)
+16: 4K2K60_444,Dolby/DTS 5.1 SDR (10/12-bit)
+17: 4K2K60_444,HD Audio 7.1 SDR (10/12-bit)
+18: 4K2K60_444,Stereo Audio 2.0 HDR (10/12-bit)
+19: 4K2K60_444,Dolby/DTS 5.1 HDR (10/12-bit)
+20: 4K2K60_444,HD Audio 7.1 HDR (10/12-bit)
+21: DVI 1280x1024@60Hz, Audio None
+22: DVI 1920x1080@60Hz, Audio None
+23: DVI 1920x1200@60Hz, Audio None
+25: User EDID 1
+26: User EDID 2
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 edid
+
+Set TX1 EDID to 1080P, Stereo Audio 2.0 SDR
+
+with default edid 00.
+example
+TELNET Log in to the CHAZY CONTROL
+Set TX1 EDID to 1080P, Stereo Audio 2.0 SDR, enter the command:
+SET ENC 1 EDID DEFAULT 0
+return:
+[SUCCESS]Set encoder 001 edid with default edid 00.
+
+4.7 Set up the TX copy of the RX EDID
+API joggle
+SET ENC [enc] EDID COPY [dec]
+description
+Set the EDID of the TX copy of the RX
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+dec
+
+[001...762]: R X ID No
+
+returned value
+
+description
+
+[SUCCESS]Copy decoder 002 edid to encoder
+
+Set the EDID of the TX 1 copy of the RX 2
+
+001.
+example
+
+45
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the EDID of the TX 1 copy RX 2, enter the command:
+SET ENC 1 EDID COPY 2
+return:
+[SUCCESS]Copy decoder 002 edid to encoder 001.
+
+4.8 Set the TX IR level
+API joggle
+SET ENC [enc ] IR VOL 5V/12V
+description
+Set the TXIR level.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+5V
+
+Use a 5V IR wire line
+
+12V
+
+Use a 12V IR wire line
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 IR voltage 5V.
+
+Set the TX 1 to use a 5V IR wire
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the TX 1 to use a 5V IR wire, enter the command:
+SET ENC 1 IR VOL 5V
+return:
+[SUCCESS]Set enc oder 001 IR voltage 5V.
+
+4.9 Set the TXIO level
+API joggle
+SET ENC [enc ] IO VOL 5V/12V
+description
+Set the TXIO level.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+5V
+
+The IO level was set at 5V
+
+12V
+
+The IO level was 12V
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 io voltage 5V.
+
+Set the TX1 IO level to 5V
+
+example
+
+46
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the TX1 IO level to 5V, and enter the command:
+SET ENC 1 I O
+
+VOL 5V
+
+return:
+[SUCCESS]Set enc oder 001 io
+
+voltage 5V.
+
+4.10 Set the TXIO direction
+API joggle
+SET ENC [enc ] IO 1 DIR IN/OUT
+SET ENC [enc ] IO 2 DIR IN/OUT
+description
+Set the TXIO direction.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+IN
+
+The IO is set as the input
+
+OUT
+
+The IO is set to the output
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 IO 1 as input port.
+
+Set the TX1 IO 1 as the input
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set TX1 IO 1 as input, enter a command:
+SET ENC 1 IO 1 DIR IN
+return:
+[SUCCESS]Set enc oder 001 IO 1 as input port.
+
+4.11 Set the TXIO output level
+API joggle
+SET ENC [enc ] IO 1 OUT 0/1
+SET ENC [enc ] IO 2 OUT 0/1
+description
+Set the TXIO output level, only if the IO direction is set to the output.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+0
+
+IO output low level
+
+1
+
+IO output at a high level
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 IO 1 output level 0.
+
+Set the TX1 IO 1 output low level
+
+example
+
+47
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the TX1 IO 1 output low level, enter the command:
+SET ENC 1 IO 1 OUT 0
+return:
+[SUCCESS]Set enc oder 001 IO 1 output level 0.
+
+4.12 Set up the TX Relay switch
+API joggle
+SET ENC [enc ] RELAY 1 OPEN/CLOSE
+SET ENC [enc ] RELAY 2 OPEN/CLOSE
+description
+Set up the TX Relay switch.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+OPEN
+
+Relay break
+
+CLOSE
+
+Relay close
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 Relay 1 close.
+
+Set the TX1 Relay 1 to close
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the TX1 Relay 1 to close, and enter the command:
+SET ENC 1 RELAY 1 CLOSE
+return:
+[SUCCESS]Set enc oder 001 Relay 1 close.
+
+4.13 Set up the TX CEC / ARC switch
+API joggle
+SET ENC [enc ] SAC ARC/CEC/OFF
+description
+Switch TX C EC / ARC switch, open the CEC by default.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+ARC
+
+open ARC
+
+CEC
+
+open CEC
+
+OFF
+
+Close the CEC and the ARC
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 select ARC, the enc
+
+Set the TX 1 to enable the ARC
+
+oder will reboot if setting changed.
+example
+
+48
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the TX 1 to turn on the ARC and enter the command:
+SET ENC 1 SAC ARC
+return:
+[SUCCESS]Set enc oder 001 select ARC, the enc oder will reboot if setting changed.
+
+4.14 Set the TX electric mode
+API joggle
+SET ENC [enc ] NET FIBER/COPPER
+description
+Set TX optical mode, default to electrical port.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+FIBER
+
+The network card is in light mode
+
+COPPER
+
+The network card is electric mode
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 network interface to
+
+Set the TX 1 network card to the electric mode
+
+Copper.
+example
+TELNET Log in to the CHAZY CONTROL
+Set the TX 1 network card to the electric mode, enter the command:
+SET ENC 1 NET COPPER
+return:
+[SUCCESS]Set enc oder 001 network interface to Copper.
+
+4.15 Set the TX multicast mode
+API joggle
+SET ENC [enc ] MULTICAST ON/OFF
+description
+Set TX multicast mode on or off, default to off.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+ON
+
+Set TX multicast mode on
+
+OFF
+
+Set TX multicast mode off
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 multicast on.
+
+Set the TX 1 multicast on
+
+example
+
+49
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the TX 1 multicast on, enter the command:
+SET ENC 1 MULTICAST ON
+return:
+[SUCCESS]Set encoder 001 multicast on.
+
+4.16 Set the TX dante bridge
+API joggle
+SET ENC [enc ] DANTE BRIDGE ON/OFF
+description
+Set TX dante bridge on or off, default to off.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+ON
+
+Set TX dante bridge on
+
+OFF
+
+Set TX dante bridge off
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 dante bridge on.
+
+Set the TX 1 dante bridge on
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the TX 1 dante bridge on, enter the command:
+SET ENC 1 DANTE BRIDGE ON
+return:
+[SUCCESS]Set encoder 001 dante bridge on.
+
+4.17 Set the TX dante vlan
+API joggle
+SET ENC [enc ] DANTE VLAN ON/OFF
+description
+Set TX dante vlan on or off, default to off.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+ON
+
+Set TX dante vlan on
+
+OFF
+
+Set TX dante vlan off
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 dante VLAN on.
+
+Set the TX 1 dante vlan on
+
+example
+
+50
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the TX 1 dante vlan on, enter the command:
+SET ENC 1 DANTE VLAN ON
+return:
+[SUCCESS]Set encoder 001 dante VLAN on.
+
+4.18 Set the TX dante vlan tag
+API joggle
+SET ENC [enc ] DANTE VLAN TAG [tag]
+description
+Set TX dante vlan tag, default to 2.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+tag
+
+[1...4095]: VLAN tag
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 dante VLAN tag to 2.
+
+Set the TX 1 dante vlan tag to 2
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the TX 1 dante vlan on, enter the command:
+SET ENC 1 DANTE VLAN TAG 2
+return:
+[SUCCESS]Set encoder 001 dante VLAN tag to 2.
+
+4.19 Send CEC data to TX (Guest mode)
+API joggle
+SET ENC [enc ] CEC SEND xx xx
+description
+Send CEC data to TX (Guest mode)
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+xx xx
+
+16 decimal CEC instruction code
+
+returned value
+
+description
+
+[SUCCESS]Send CEC data to enc oder 001 done.
+
+The CEC instruction was sent successfully
+
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET ENC 1 CEC SEND 4F 36
+return:
+[SUCCESS]Send CEC data to enc oder 001 done.
+
+51
+
+Chazy Control API Reference
+
+4.20 Send IR data to TX (Guest mode)
+API joggle
+SET ENC [enc ] IR SEND xx xx
+
+xx xx
+
+description
+Send IR data to TX (Guest mode)
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+xx xx
+
+xx xx
+
+16 decimal IR instruction code, support CCF format
+
+returned value
+
+description
+
+[SUCCESS]Send IR data to enc oder 001 done.
+
+Send the IR command successfully
+
+example
+TELNET Log in to the CHAZY CONTROL
+input command:
+SET ENC 1 IR SEND
+0000006700000022015600ab001600600016006000160060001600160016006000160016001600600016001
+600160016001600160016001600160060001600160016006000160016001600600016006000160016001600
+600016001600160016001600600016006000160060001600160016006000160016001600600016006000160
+016001600160016001600160593
+return:
+[SUCCESS]Send IR data to enc oder 001 done.
+
+4.21 Set the TX serial port parameters
+API joggle
+SET ENC [enc ] GUEST ON/OFF BR [br] BIT [bit]
+description
+Set the TX serial port parameters
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+ON
+
+Open the serial port to Guest mode
+
+OFF
+
+Close the serial port, Guest mode
+
+br
+
+[0:300 1:600 2:1200 3:2400 4:4800 5:9600]
+[6:19200 7:38400 8:57600 9:115200]
+
+bit
+
+Data Bits + Parity + Stop Bits
+example: 8n1
+Data Bits=[5...8], Parity=[n o e], Stop Bits=[1..2]
+
+returned value
+
+description
+
+[SUCCESS]Set serial guest mode config done.
+
+The TX serial port parameter was set
+successfully
+
+example
+52
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set TX 1 open serial port Guest mode, port rate 115200,8-bit data bit, no check bit, 1-bit stop bit, input
+command:
+SET ENC 1 GUEST ON BR 9 BIT 8N1
+return:
+[SUCCESS]Set serial guest mode config done.
+
+4.22 Start the TX serial port, Guest mode
+API joggle
+SET ENC [enc ] GUEST
+description
+Start TX serial port Guest mode and is only valid if the serial port parameter is set to GUEST ON
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+
+returned value
+
+description
+
+not have
+example
+TELNET Log in to the CHAZY CONTROL
+Start the TX 1 serial port Guest mode and enter the command:
+SET ENC 1 GUEST
+
+4.23 Exit the TX serial port, Guest mode
+API joggle
+EXITGUEST
+description
+After starting the TX serial port Guest mode, send the EXITGUEST to exit the Guest mode
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+not have
+example
+TELNET Log in to the CHAZY CONTROL
+Exit the TX 1 serial port Guest mode and enter the command:
+EXITGUEST
+
+4.24 Set up the TXIP mode
+API joggle
+53
+
+Chazy Control API Reference
+
+SET ENC [enc ] IPMODE DHCP/STATIC
+description
+Set the IP mode for the TX
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+DHCP
+
+trends IP
+
+STATIC
+
+static state IP
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 ip mode to dhcp.
+
+The setting is successful and needs to restart TX
+
+Use "SET ENC xx NETWORK REBOOT"
+
+to take effect
+
+command to apply new config!!!
+example
+TELNET Log in to the CHAZY CONTROL
+Set TX 1 to Dynamic IP mode, enter the command:
+SET ENC 1 IPMODE DHCP
+return:
+[SUCCESS]Set encoder 001 ip mode to dhcp.
+Use "SET ENC xx NETWORK REBOOT" command to apply new config!!!
+
+4.25 Set up the TX IP address
+API joggle
+SET ENC [enc ] STATIC IP [ip]
+description
+Set the IP address for TX, only valid when IPMODE is STATIC.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+
+ip
+
+IP addresses, such as 169.254.10.10
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 IP address to
+
+The setting is successful and needs to restart TX
+
+169.254.020.006.
+
+to take effect
+
+Use "SET ENC xx NETWORK REBOOT"
+command to apply new config!!!
+example
+TELNET Log in to the CHAZY CONTROL
+Set the IP of TX 1 to 169.254.20.6, enter the command:
+SET ENC 1 STATIC IP 169.254.20.6
+return:
+[SUCCESS]Set enc oder 001 IP address to 169.254.020.006.
+Use "SET ENC xx NETWORK REBOOT" command to apply new config!!!
+
+54
+
+Chazy Control API Reference
+
+4.26 Sets the TX subnet mask
+API joggle
+SET ENC [enc ] STATIC MASK [mask]
+description
+Set the subnet mask for TX, only valid when IPMODE is STATIC.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+mask
+
+Subnet mask, such as 255.255.0.0
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 subnet mask address
+
+The setting is successful and needs to restart TX
+
+to 255.255.000.000.
+
+to take effect
+
+Use "SET ENC xx NETWORK REBOOT"
+command to apply new config!!!
+example
+TELNET Log in to the CHAZY CONTROL
+Set the subnet mask of TX 1 to 255.255.0.0, enter the command:
+SET ENC 1 STATIC MASK 255.255.0.0
+return:
+[SUCCESS]Set encoder 001 subnet mask address to 255.255.000.000.
+Use "SET ENC xx NETWORK REBOOT" command to apply new config!!!
+
+4.27 Set up the TX gateway address
+API joggle
+SET ENC [enc ] STATIC GATEWAY [gw]
+description
+Set the gateway address of TX, only valid when IPMODE is STATIC.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+gw
+
+Gateway address, such as 169.254.0.1
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 001 gateway address to
+
+The setting is successful and needs to restart TX
+
+169.254.000.001.
+
+to take effect
+
+Use "SET ENC xx NETWORK REBOOT"
+command to apply new config!!!
+example
+TELNET Log in to the CHAZY CONTROL
+Set the gateway address of TX to 169.254.0.1, enter the command:
+SET ENC 1 STATIC GATEWAY 169.254.0.1
+return:
+[SUCCESS]Set encoder 001 gateway address to 169.254.000.001.
+55
+
+Chazy Control API Reference
+
+Use "SET ENC xx NETWORK REBOOT" command to apply new config!!!
+
+4.28 Set up the TX network card to restart
+API joggle
+SET ENC [enc ] NETWORK REBOOT
+description
+Set the network restart for TX
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 reboot and apply all
+
+The setting is successful and needs to restart TX
+
+the new config.
+
+to take effect
+
+example
+TELNET Log in to the CHAZY CONTROL
+Restart the TX 1 network card and enter the command:
+SET ENC 1 NETWORK REBOOT
+return:
+[SUCCESS]Set enc oder 001 reboot and apply all the new config.
+
+4.29 Remove the TX from the system
+API joggle
+SET ENC [enc ] DELETE
+description
+delete TX
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+returned value
+
+description
+
+[SUCCESS]Delete enc oder 001 done.
+
+The TX 1 was deleted successfully
+
+example
+TELNET Log in to the CHAZY CONTROL
+Delete TX 1, enter the command:
+SET ENC 1 DELETE
+return:
+[SUCCESS]Delete enc oder 001 done.
+
+56
+
+Chazy Control API Reference
+
+4.30 restart TX
+API joggle
+SET ENC [enc ] REBOOT
+description
+restart TX
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 reboot and apply all
+
+Restart success
+
+the new config.
+example
+TELNET Log in to the CHAZY CONTROL
+Restart the TX 1, and enter the command:
+SET ENC 1 REBOOT
+return:
+[SUCCESS]Set enc oder 001 reboot and apply all the new config.
+
+4.31 reset TX
+API joggle
+SET ENC [enc ] RESET
+description
+reset TX
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder 001 reset to default
+
+The reset was successful
+
+setting.
+example
+TELNET Log in to the CHAZY CONTROL
+Reset the TX 1, enter the command:
+SET ENC 1 RESET
+return:
+[SUCCESS]Set enc oder 001 reset to default setting.
+
+4.32 Gets the TX status information
+API joggle
+GET ENC [enc ] STATUS
+description
+57
+
+Chazy Control API Reference
+
+To obtain the status information of TX, to obtain the status information of all TX without the
+parameter enc, namely, GET ENC STATUS is the same as GET ENC 0 STATUS.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+returned value
+
+description
+
+Returns the TX status information
+
+Include the version number, network information
+and other states
+
+example
+TELNET Log in to the CHAZY CONTROL
+Get the TX 1 status information and enter the command:
+GET ENC 1 STATUS
+return:
+================================================================
+CHAZY CONTROL Encoder Info
+FW Version: 1.00.17
+ID
+
+Type
+
+Net
+
+Sig
+
+001
+
+Gen 2 On
+
+On
+
+>>Fix
+
+Ver
+
+EDID
+
+Aud
+
+MCast
+
+3.00.01 DF000 HDMI
+
+On
+
+Name
+Encoder 001
+
+Arc
+000
+
+>>Sel
+
+Arc
+000
+
+>>SAC
+
+SGEn/Br/Bit
+
+ARC
+
+Off /9 /8n1
+
+>>Pin
+
+IOVOL/IODIR/IODAT IRVOL RLY
+
+(1)
+
+12
+
+Out
+
+0
+
+(2)
+
+12
+
+Out
+
+0
+
+>>IM
+
+12
+
+PHY
+
+Open Copper
+Open
+
+MAC
+
+Static 6C:DF:FB:07:87:E9
+>>IP
+
+GW
+
+SM
+
+169.254.010.001 169.254.001.001 255.255.000.000
+================================================================
+
+4.33 Set the TX preset IP mode
+API joggle
+SET ENC PRESET IPMODE [mode]
+description
+Set the IP mode of TX preset, and assign the IP of TX according to the TX preset mode when TX is
+added to the system
+parameter
+
+description
+
+mode
+
+0:AUTOIP
+1:DHCP
+58
+
+Chazy Control API Reference
+
+2:STATIC
+returned value
+
+description
+
+[SUCCESS]Set enc oder preset IP to static mode.
+
+Set successfully, the TX preset IP mode is static
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the TX preset IP mode to static, enter the command:
+SET ENC PRESET IPMODE 2
+return:
+[SUCCESS]Set enc oder preset IP to static mode.
+
+4.34 Sets the TX preset IP start address
+API joggle
+SET ENC PRESET START IP [ip]
+description
+Sets the IP start address for the TX preset
+parameter
+
+description
+
+ip
+
+IP addresses, such as 169.254.10.10
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder preset IP min
+
+Set the IP start address for the TX preset to
+
+172.016.010.001.
+
+172.16.10.1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the IP start address for TX preset to 172.16.10.1, enter the command:
+SET ENC PRESET START IP 172.16.10.1
+return:
+[SUCCESS]Set enc oder preset IP min 172.016.010.001.
+
+4.35 Set the TX preset IP end address
+API joggle
+SET ENC PRESET END IP [ip]
+description
+Set the IP end address of TX preset. The end address should be greater than the starting address and
+in the same network segment.
+parameter
+
+description
+
+ip
+
+IP addresses, such as 169.254.20.10
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder preset IP max
+
+Set the IP end address of the TX preset to
+
+172.016.010.200.
+
+172.16.10.200
+
+example
+
+59
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the IP end address of the TX preset to 172.16.10.200, enter the command:
+SET ENC PRESET END IP 172.16.10.200
+return:
+[SUCCESS]Set enc oder preset IP max 172.016.010.200.
+
+4.36 Sets the TX preset subnet mask
+API joggle
+SET ENC PRESET SM [mask]
+description
+Set the subnet mask for the TX preset
+parameter
+
+description
+
+mask
+
+Subnet mask, such as 255.255.0.0
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder preset netmask
+
+Set the subnet mask for the TX preset to
+
+255.255.000.000.
+
+255.255.0.0
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the subnet mask of the TX preset to 255.255.0.0, enter the command:
+SET ENC PRESET SM 255.255.0.0
+return:
+[SUCCESS]Set enc oder preset netmask 255.255.000.000.
+
+4.37 Set the TX preset gateway address
+API joggle
+SET ENC PRESET GW [gw]
+description
+Set the gateway address for the TX preset
+parameter
+
+description
+
+gw
+
+Gateway address, such as 169.254.0.1
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder preset gateway
+
+Set the gateway address of the TX preset to
+
+172.016.010.001.
+
+172.16.10.1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the gateway address of TX preset to 172.16.10.1, enter the command:
+SET ENC PRESET GW 172.16.10.1
+return:
+[SUCCESS]Set enc oder preset gateway 172.016.010.001.
+
+60
+
+Chazy Control API Reference
+
+4.38 Save the TX preset configuration
+API joggle
+SET ENC PRESET APPLY
+description
+Save the preset configuration of TX, and after the preset IP mode above is set, you need to call
+APPLY to save it.
+parameter
+
+description
+
+returned value
+
+description
+
+[SUCCESS]Set enc oder preset IP done.
+
+Saving the TX preset configuration is complete
+
+example
+TELNET Log in to the CHAZY CONTROL
+Save the TX preset configuration, and enter the command:
+SET ENC PRESET APPLY
+return:
+[SUCCESS]Set enc oder preset IP done.
+
+61
+
+Chazy Control API Reference
+
+5. The DANTE control module API reference
+5.1 Search dante devices
+API joggle
+DANTE DEV SEARCH
+description
+Search dante devices.
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+See below example.
+
+Search dante devices.
+
+example
+TELNET Log in to the CTL100DA
+Search dante devices, enter the command:
+DANTE DEV SEARCH
+return:
+================================================================
+Search Dante Result Info
+
+==Dante Device
+Index
+
+IP
+
+MAC
+
+Name
+
+001
+
+169.254.27.127
+
+34:d0:b8:27:05:a7 DA22XLR-WP-EU-V2-2705a7
+
+002
+
+169.254.20.1
+
+6c:df:fb:00:00:1c DAV-00001c
+
+003
+
+169.254.10.1
+
+6c:df:fb:01:1a:85 DAV-011a85
+
+004
+
+169.254.20.3
+
+6c:df:fb:09:80:11 Decoder-003
+
+================================================================
+
+5.2 Set the dante name
+API joggle
+SET DANTE DEV [devname] NAME [name]
+description
+Set the dante name.
+parameter
+
+description
+
+devname
+
+Dante device name
+
+name
+
+Name, with a maximum length of 16 bytes
+
+returned value
+
+description
+
+[SUCCESS]Set dante Encoder-001 name to TX1.
+
+Set the dante device Encoder-001 name to be
+the TX1
+
+example
+62
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the dante device Encoder-001 name to TX1, enter the command:
+SET DANTE DEV Encoder-001 NAME TX1
+return:
+[SUCCESS]Set dante Encoder-001 name to TX1.
+
+5.3 Set the dante audio sample rate
+API joggle
+SET DANTE DEV [devname] SRATE [rate]
+description
+Set the dante audio sample rate.
+parameter
+
+description
+
+devname
+
+Dante device name
+
+rate
+
+Sample rate
+
+returned value
+
+description
+
+[SUCCESS]Set dante TX1 srate to 44100.
+
+Set the dante device TX1 audio sample rate to be
+44100
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the dante device TX1 audio sample rate to 44100, enter the command:
+SET DANTE DEV TX1 SRATE 44100
+return:
+[SUCCESS]Set dante TX1 srate to 44100.
+
+5.4 Set the dante audio encoding
+API joggle
+SET DANTE DEV [devname] ENC [enc]
+description
+Set the dante audio encoding.
+parameter
+
+description
+
+devname
+
+Dante device name
+
+enc
+
+Encoding
+
+returned value
+
+description
+
+[SUCCESS][SUCCESS]Set dante TX1 enc to 24.
+
+Set the dante device TX1 audio encoding to be
+PCM24
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the dante device TX1 audio encoding to PCM24, enter the command:
+SET DANTE DEV TX1 ENC 24
+return:
+[SUCCESS][SUCCESS]Set dante TX1 enc to 24.
+63
+
+Chazy Control API Reference
+
+5.5 Set the dante TX channel name
+API joggle
+SET DANTE DEV [devname] AUDIO/VIDEO TXCHN [chn] NAME [name]
+description
+Set the dante TX channel name.
+parameter
+
+description
+
+devname
+
+Dante device name
+
+AUDIO
+
+Audio channel
+
+VIDEO
+
+Video channel
+
+chn
+
+Channel number
+
+name
+
+Name, with a maximum length of 16 bytes
+
+returned value
+
+description
+
+[SUCCESS]Set dante TX1 tx audio channel 1
+
+Set the dante device TX1 audio channel 1 name
+
+name to ch1.
+
+to ch1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the dante device TX1 audio channel 1 name to ch1, enter the command:
+SET DANTE DEV TX1 AUDIO TXCHN 1 NAME ch1
+return:
+[SUCCESS]Set dante TX1 tx audio channel 1 name to ch1.
+
+5.6 Set the dante TX flow
+API joggle
+SET DANTE DEV [devname] AUDIO/VIDEO TXFLOW [name] ID [id] SLOT [slot]
+description
+Set the dante TX flow.
+parameter
+
+description
+
+devname
+
+Dante device name
+
+AUDIO
+
+Audio channel
+
+VIDEO
+
+Video channel
+
+name
+
+Name, with a maximum length of 16 bytes
+
+id
+
+Flow ID
+
+slot
+
+TX channels
+
+returned value
+
+description
+
+[SUCCESS]Dante TX1 add tx flow 1 success.
+
+Set the dante device TX1 audio TX flow
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the dante device TX1 audio TX flow, enter the command:
+SET DANTE DEV TX1 AUDIO TXFLOW 1 ID 1 SLOT 1:2
+return:
+[SUCCESS]Dante TX1 add tx flow 1 success.
+64
+
+Chazy Control API Reference
+
+5.7 Delete the dante TX flow
+API joggle
+SET DANTE DEV [devname] AUDIO/VIDEO TXFLOW [id] DELETE
+description
+Delete the dante TX flow.
+parameter
+
+description
+
+devname
+
+Dante device name
+
+AUDIO
+
+Audio channel
+
+VIDEO
+
+Video channel
+
+id
+
+Flow ID
+
+returned value
+
+description
+
+[SUCCESS]Dante TX1 delete tx flow 1 success.
+
+Delete the dante device audio TX flow 1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Delete the dante device audio TX flow 1, enter the command:
+SET DANTE DEV TX1 AUDIO TXFLOW 1 DELETE
+return:
+[SUCCESS]Dante TX1 delete tx flow 1 success.
+
+5.8 Set the dante RX channel name
+API joggle
+SET DANTE DEV [devname] AUDIO/VIDEO RXCHN [chn] NAME [name]
+description
+Set the dante RX channel name.
+parameter
+
+description
+
+devname
+
+Dante device name
+
+AUDIO
+
+Audio channel
+
+VIDEO
+
+Video channel
+
+chn
+
+Channel number
+
+name
+
+Name, with a maximum length of 16 bytes
+
+returned value
+
+description
+
+[SUCCESS]Set dante TX1 rx audio channel 1
+
+Set the dante device TX1 audio rx channel 1
+
+name to 1.
+
+name to 1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the dante device TX1 audio rx channel 1 name to 1, enter the command:
+SET DANTE DEV TX1 AUDIO RXCHN 1 NAME 1
+return:
+[SUCCESS]Set dante TX1 rx audio channel 1 name to 1.
+
+65
+
+Chazy Control API Reference
+
+5.9 Set the dante subscribe
+API joggle
+SET DANTE DEV [devname] AUDIO/VIDEO RXCHN [chn] SOURCE [txdev] CHN [chn]
+description
+Set the dante subscribe.
+parameter
+
+description
+
+devname
+
+Dante device name
+
+AUDIO
+
+Audio channel
+
+VIDEO
+
+Video channel
+
+chn
+
+Channel number
+For AUDIO: number could be 1 or 2 for stereo
+audio Dante device. To set one channel at a
+time. For multi-channel Dante device for example
+with 8 channels, the number would be
+1,2,3,4…7,8. Similar for 16/32/64 channels.
+The chn number in RXCHN [chn] and CHN [chn]
+could be different values to implement channelcross configuration.
+For VIDEO: number always is 1.
+
+txdev
+
+TX dante device name
+
+returned value
+
+description
+
+[SUCCESS]Set dante Decoder-001 rx channel 1
+
+Set the dante device Decoder-001 subscribe TX1
+
+subscribe to 1@TX1.
+
+channel 1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the dante device Decoder-001 subscribe TX1 channel 1, enter the command:
+SET DANTE DEV Decoder-001 VIDEO RXCHN 1 SOURCE TX1 CHN 1
+return:
+[SUCCESS]Set dante Decoder-001 rx channel 1 subscribe to 1@TX1.
+
+5.10 Set the dante latency
+API joggle
+SET DANTE DEV [devname] LATENCY [latency]
+description
+Set the dante latency.
+parameter
+
+description
+
+devname
+
+Dante device name
+
+latency
+
+Latency value
+
+returned value
+
+description
+
+[SUCCESS]Set dante Decoder-001 latency to
+
+Set the dante device Decoder-001 lantency to 5
+
+5000.
+
+milliseconds
+
+example
+66
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the dante device Decoder-001 lantency to 5 milliseconds, enter the command:
+SET DANTE DEV Decoder-001 LATENCY 5000
+return:
+[SUCCESS]Set dante Decoder-001 latency to 5000.
+
+5.11 Get the dante status
+API joggle
+SET DANTE DEV [devname] STATUS
+description
+GET the dante status.
+parameter
+
+description
+
+devname
+
+Dante device name
+
+returned value
+
+description
+
+See below example.
+
+Get the dante device TX1 status
+
+example
+TELNET Log in to the CHAZY CONTROL
+Get the dante device TX1 status, enter the command:
+GET DANTE DEV TX1 STATUS
+return:
+================================================================
+Controller(DA) Dante Info
+FW Version: 1.00.17
+ID
+
+PVer
+
+DVer
+
+Name
+
+001
+
+2.0.0
+
+1.0.6.1 TX1
+
+>>SampleRate Support
+44100
+
+44100,48000,88200,96000
+
+>>Encoding
+
+Support
+
+PCM 24
+
+24,16,32
+
+>>Latency
+
+Support
+
+4000
+
+5000
+
+>>Aes67Support
+No
+
+Aes67Enable Aes67Prefix
+-
+
+-
+
+>>Primary v1 Multicast
+Follower
+>>IM
+
+MAC
+Static 6C:DF:FB:07:87:E9
+
+>>IP
+
+GW
+
+SM
+
+169.254.010.001 169.254.001.001 255.255.000.000
+================================================================
+
+67
+
+Chazy Control API Reference
+
+6. TX SS Module API reference
+6.1 Get the TX SS status information
+API joggle
+GET ENC [enc] SS STATUS
+description
+To obtain the status information of TXSS, to obtain the status information of all TXSS without the
+parameter enc, namely, GET ENC SS STATUS is the same as GET ENC 0 SS STATUS.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+returned value
+
+description
+
+Returns the TXSS status information
+
+Include the version number, network information
+and other states
+
+example
+TELNET Log in to the CHAZY CONTROL
+Get the TX 2 SS status information and enter the command:
+GET ENC 2 SS STATUS
+return:
+================================================================
+CHAZY CONTROL Secondary Stream Info
+ID
+
+WorkMode
+
+002
+
+follow
+
+Version
+1.12.02
+
+>>MainStream URL
+rtsp://169.254.110.1/live/main/av_stream
+>>SubStream URL
+rtsp://169.254.110.1/live/sub/av_stream
+>>MainStream
+h265
+
+EncType
+
+auto
+
+>>SubStream
+h264
+
+480_270
+
+Fps
+
+cbr
+Res
+
+30
+
+cbr
+
+IpAdress
+
+Mask
+
+169.254.110.1
+
+255.255.0.0
+
+>>VlanTag
+On
+
+30
+EncType
+
+>>IpMode
+static
+
+Res
+
+RcMode
+
+2
+
+30
+
+Fps
+
+RcMode
+
+3
+
+30
+
+BitRate Gop
+main
+BitRate Gop
+
+169.254.10.1
+
+MAC
+6c:df:fb:09:47:b6
+
+TagID
+0
+
+================================================================
+
+API joggle
+GET ENC [enc] SS MSURL
+description
+68
+
+Profile
+
+baseline
+
+Gateway
+
+6.2 Get the TX SS mainstream URL
+
+Profile
+
+Chazy Control API Reference
+
+Get the mainstream URL of TX SS, Gen 1 device SS mainstream format is RTSP, Gen 2 device SS
+mainstream format is MJPG.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+returned value
+
+description
+
+Encoder 002 secondary stream
+
+The mainstream URL of TX 2 SS is
+
+MSURL:rtsp://169.254.110.1/live/main/av_stream.
+
+rtsp://169.254.110.1/live/main/av_stream
+
+example
+TELNET Log in to the CHAZY CONTROL
+Get the TX2 SS mainstream URL, enter the command:
+GET ENC 2 SS MSURL
+return:
+Encoder 002 secondary stream MSURL:rtsp://169.254.110.1/live/main/av_stream.
+Get the TX1 SS mainstream URL, enter the command:
+GET ENC 1 SS MSURL
+return:
+Encoder 001 secondary stream MSURL:http://169.254.10.2:8080/?action=stream.
+
+6.3 Gets the TX SS substream URL
+API joggle
+GET ENC [enc] SS SSURL
+description
+Get the substream URL of TX SS, Gen 1 device SS substream format is RTSP, not supported by Gen 2
+device.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+returned value
+
+description
+
+Encoder 002 secondary stream
+
+The substream URL of TX 2 SS is
+
+SSURL:rtsp://169.254.110.1/live/sub/av_stream.
+
+rtsp://169.254.110.1/live/sub/av_stream
+
+example
+TELNET Log in to the CHAZY CONTROL
+Get the TX2 SS secondary stream URL, enter the command:
+GET ENC 2 SS S SURL
+return:
+Encoder 002 secondary stream SSURL:rtsp://169.254.110.1/live/sub/av_stream.
+
+6.4 restart TX SS
+API joggle
+SET ENC [enc] SS REBOOT
+description
+69
+
+Chazy Control API Reference
+
+Restart the TX SS, not supported by the Gen 2 device.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 002 secondary stream
+
+Restart the TX2 SS module
+
+reboot.
+example
+TELNET Log in to the CHAZY CONTROL
+Restart the TX2 SS module and enter the command:
+SET ENC 2 SS REBOOT
+return:
+[SUCCESS]Set encoder 002 secondary stream reboot.
+
+6.5 reset TX SS
+API joggle
+SET ENC [enc] SS RESET
+description
+Reset TX SS, Gen 2 device is not supported.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 002 secondary stream
+
+Reset the TX2 SS module
+
+reset to default setting.
+example
+TELNET Log in to the CHAZY CONTROL
+Reset the TX2 SS module, enter the command:
+SET ENC 2 SS RESET
+return:
+[SUCCESS]Set encoder 002 secondary stream reset to default setting.
+
+6.6 Set the TX SS mainstream parameters
+API joggle
+SET ENC [enc] SS MAINENCATTR E [etype] H [mhor] V [mver] B [mbr]
+description
+Set the mainstream parameters of TXSS, not supported by the Gen 2 device.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+etype
+
+0:h264
+1:h265
+70
+
+Chazy Control API Reference
+
+mhor
+
+Set the encoding output image width, range:
+960~1920, the value must be even
+
+mver
+
+Set the encoding output image height, range:
+540~1080, the value must be even
+
+mbr
+
+Set the encoded bit rate (bps)
+0:1Mb
+1:2Mb
+2:4Mb
+3:6Mb
+4:8Mb
+5:10Mb
+6:12Mb
+7:16Mb
+8:20Mb
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 002 secondary stream
+
+Set success
+
+MainEncAttr done.
+example
+TELNET Log in to the CHAZY CONTROL
+Set the mainstream encoding format of TX 2 SS to h265, output image size 960x540, encoding bit
+rate 2Mbps, input command:
+SET ENC 2 SS MAINENCATTR E 1 H 960 V 540 B 1
+return:
+[SUCCESS]Set encoder 002 secondary stream MainEncAttr done.
+
+6.7 Set the TX SS subflow parameter
+API joggle
+SET ENC [enc] SS SUBENCATTR E [etype] H [shor] V [sver] B [sbr]
+description
+Set the secondary flow parameters of TXSS, not supported by the Gen 2 device.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+etype
+
+0:h264
+1:h265
+
+s hor
+
+Set the encoding output image width, range:
+320~960, the value must be even
+
+s ver
+
+Set the encoding output image height, range:
+180~540, the value must be even
+
+s br
+
+Set the encoded bit rate (bps)
+0:128kb
+1:256kb
+2:512kb
+71
+
+Chazy Control API Reference
+
+3:1Mb
+4:2Mb
+returned value
+
+description
+
+[SUCCESS]Set encoder 002 secondary stream
+
+Set success
+
+SubEncAttr done.
+example
+TELNET Log in to the CHAZY CONTROL
+Set the secondary flow encoding format of TX 2 SS to h265, the output image size is 640x480, the
+encoding bit rate is 512 kbps, input command:
+SET ENC 2 SS SUBENCATTR E 1 H 640 V 480 B 2
+return:
+[SUCCESS]Set encoder 002 secondary stream SubEncAttr done.
+
+6.8 Set up the TX SS operating mode
+API joggle
+SET ENC [enc] SS WORKMODE [mode]
+description
+Set the working mode of TX SS, not supported by the Gen 2 device.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+mode
+
+0:FOLLOW
+1:DHCP
+2:STATIC
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 002 secondary stream
+
+Set the TX 2 SS to work in follow mode
+
+workmode to follow.
+example
+TELNET Log in to the CHAZY CONTROL
+Set the TX 2 SS to work in follow mode, enter the command:
+SET ENC 2 SS WORKMODE 0
+return:
+[SUCCESS]Set encoder 002 secondary stream workmode to follow.
+
+6.9 Set up the TX SS IP
+API joggle
+SET ENC [enc] SS NETWORK IP [ip] MASK [mask] GATEWAY [gw]
+description
+Set TX SS IP, only valid when SS works at DHCP and STATIC, not supported by Gen 2 devices.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+72
+
+Chazy Control API Reference
+
+ip
+
+The IP address of the SS
+
+mask
+
+Subnet mask of the SS
+
+gw
+
+Gateway address of the SS
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 002 secondary stream
+
+The IP of TX 2 SS is set to 192.168.30.50, the
+
+manual ip 192.168.30.50 netmask 255.255.255.0
+
+subnet mask is 255.255.255.0, and the gateway
+
+gateway 192.168.30.1.
+
+is 192.168.30.1
+
+example
+TELNET Log in to the CHAZY CONTROL
+The IP of setting TX 2 SS is 192.168.30.50, the subnet mask is 255.255.255.0, and the gateway is
+192.168.30.1. Enter the command:
+SET ENC 2 SS NETWORK IP 192.168.30.50 MASK 255.255.255.0 GATEWAY 192.168.30.1
+return:
+[SUCCESS]Set encoder 002 secondary stream manual ip 192.168.30.50 netmask 255.255.255.0
+gateway 192.168.30.1.
+
+6.10 Set up the TX SS VLAN TAG
+API joggle
+SET ENC [enc] SS VLTAG ON [id]
+SET ENC [enc] SS VLTAG OFF
+description
+Set the VLAN TAG for TX SS, the Gen 2 device is not supported.
+parameter
+
+description
+
+enc
+
+[001... 762]: TXID No
+0: All TX
+
+id
+
+1 ~ 4094
+
+returned value
+
+description
+
+[SUCCESS]Set encoder 002 secondary stream
+
+Set the VLAN TAG of TX 2 SS equal to 10
+
+vlan ID to 10.
+example
+TELNET Log in to the CHAZY CONTROL
+Set the VLAN TAG of TX 2 SS equal to 10, enter the command:
+SET ENC 2 SS VLTAG ON 10
+return:
+[SUCCESS]Set encoder 002 secondary stream vlan ID to 10.
+Cancel the TX2 SS VLAN TAG and enter the command:
+SET ENC 2 SS VLTAG OFF
+return:
+[SUCCESS]Set encoder 002 secondary stream vlan ID to 0.
+
+73
+
+Chazy Control API Reference
+
+7. Video wall module API reference
+7.1 Create a video wall
+API joggle
+CREATE WALL HANDLE [hdl]
+description
+Create a video wall
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+returned value
+
+description
+
+[SUCCESS]Create video wall 1.
+
+Create a video wall with an ID equal to 1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Create a video wall, the ID equals 1, enter the command:
+CREATE WALL HANDLE 1
+return:
+[SUCCESS]Create video wall 1.
+
+7.2 Remove the video wall
+API joggle
+DELETE WALL HANDLE [hdl]
+description
+Remove the video wall
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+returned value
+
+description
+
+[SUCCESS]Delete videowall 1.
+
+Delete the video wall of 1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Delete Video Wall 1, enter the command:
+DELETE WALL HANDLE 1
+return:
+[SUCCESS]Delete videowall 1.
+
+7.3 Modifies the video wall name
+API joggle
+SET WALL [hdl] NAME [name]
+description
+Modifies the name of the video wall
+parameter
+
+description
+74
+
+Chazy Control API Reference
+
+hdl
+
+[01...09]: Video wall ID number
+
+name
+
+Video wall name, up to 16 characters
+
+returned value
+
+description
+
+[SUCCESS]Rename video wall 1: VW1.
+
+Delete video wall 1 is named VW1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Delete the video wall 1 with the name VW1, enter the command:
+SET WALL 1 NAME VW1
+return:
+[SUCCESS]Rename video wall 1: VW1.
+
+7.4 Set the video wall size
+API joggle
+SET WALL [hdl] C [c] R [r]
+description
+Set the size of the video wall.
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+c
+
+Number of video wall columns
+
+r
+
+Number of video wall lines
+
+returned value
+
+description
+
+[SUCCESS]Create video wall 1: NULL.
+
+Set up the video wall 1 successfully
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set up the video wall for 2x2 and enter the command:
+SET WALL 1 C 2 R 2
+return:
+[SUCCESS]Create video wall 1: NULL.
+
+7.5 Video wall is assigned to RX
+API joggle
+SET WALL [hdl] DEC [dec] H [h] V [v]
+description
+Video wall is assigned to RX
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+dec
+
+[001...762]: R X ID No
+
+h
+
+Column number of video wall
+
+v
+
+Line number of video wall
+
+returned value
+
+description
+
+[SUCCESS]Assign decoder 001 to video wall 1.
+
+Assign the RX 1 to the video wall 1
+
+example
+75
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Assign RX 1 to row 1, column 1 of video wall 1, enter the command:
+SET WALL 1 DEC 1 H 1 V 1
+return:
+[SUCCESS]Assign decoder 001 to video wall 1.
+
+7.6 Create a video wall preset
+API joggle
+CREATE WALL [hdl] PRESET [prs]
+description
+Create a video wall preset, and the preset 1 will automatically create a new video wall
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+prs
+
+[01...09]: Preset the ID number
+
+returned value
+
+description
+
+[SUCCESS]Create preset 2: NULL.
+
+Create preset success
+
+example
+TELNET Log in to the CHAZY CONTROL
+Video Wall 1 Create a preset of 2, enter the command:
+CREATE WALL 1 PRESET 2
+return:
+[SUCCESS]Create preset 2: NULL.
+
+7.7 Delete the video wall preset
+API joggle
+DELETE WALL [hdl] PRESET [prs]
+description
+Delete the video wall preset.
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+prs
+
+[01...09]: Preset the ID number
+
+returned value
+
+description
+
+[SUCCESS]Delete preset: Preset 2.
+
+Deleting the preset was successful
+
+example
+TELNET Log in to the CHAZY CONTROL
+Video Wall 1 delete the preset 2, enter the command:
+DELETE WALL 1 PRESET 2
+return:
+[SUCCESS]Delete preset: Preset 2.
+
+76
+
+Chazy Control API Reference
+
+7.8 Modifies the video wall preset name
+API joggle
+SET WALL [hdl] PRESET [prs] NAME [name]
+description
+Modifies the name of the video wall preset
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+prs
+
+[01...09]: Preset the ID number
+
+name
+
+Preset name, up to 16 characters supported
+
+returned value
+
+description
+
+[SUCCESS]Rename preset 1: TEST1.
+
+Modifies the video wall preset name to TEST 1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Modify the name of the video wall 1 preset 1 to TEST 1, enter the command:
+SET WALL 1 PRESET 1 NAME TEST1
+return:
+[SUCCESS]Rename preset 1: TEST1.
+
+7.9 Start the video wall preset
+API joggle
+APPLY WALL [hdl] PRESET [prs]
+description
+Start the video wall preset.
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+prs
+
+[01...09]: Preset the ID number
+
+returned value
+
+description
+
+[SUCCESS]Apply preset: Preset 1.
+
+Started preset success
+
+example
+TELNET Log in to the CHAZY CONTROL
+Start the video wall 1 preset 1, enter the command:
+APPLY WALL 1 PRESET 1
+return:
+[SUCCESS]Apply preset: Preset 1.
+
+7.10 Set up the video wall preset class
+API joggle
+SET WALL [hdl] PRESET [prs] CLASS [cls] H [h] V [v]
+description
+Set the video wall preset class and default all RX is in group A when the preset is created.
+77
+
+Chazy Control API Reference
+
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+prs
+
+[01...09]: Preset the ID number
+
+cls
+
+[A... G]: Group ID number
+
+h
+
+Column number of video wall
+
+v
+
+Line number of video wall
+
+returned value
+
+description
+
+[SUCCESS]Done.
+
+Group was created successfully
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the screen of video wall 1 to preset 1 group B, enter the command:
+SET WALL 1 PRESET 1 CLASS B H 2 V 1
+return:
+[SUCCESS]Done.
+
+7.11 Set up the signal source for the video wall preset class
+API joggle
+SET WALL [hdl] PRESET [prs] CLASS [cls] SOURCE [enc]
+description
+Set up the signal source for the video wall preset class.
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+prs
+
+[01...09]: Preset the ID number
+
+cls
+
+[A... G]: Group ID number
+
+enc
+
+[001...762]: TXID number
+0: Cancel the route
+
+returned value
+
+description
+
+[SUCCESS]Done.
+
+Set success
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the signal source of the video wall 1 preset 1 packet B as TX 1, and enter the command:
+SET WALL 1 PRESET 1 CLASS B SOURCE 1
+return:
+[SUCCESS]Done.
+
+7.12 Set up the video wall preset matrix group
+API joggle
+SET WALL [hdl] PRESET [prs] MATRIX H [h] V [v]
+description
+Set the video wall preset matrix group, and the RX in the matrix group is in matrix mode.
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+78
+
+Chazy Control API Reference
+
+prs
+
+[01...09]: Preset the ID number
+
+h
+
+Column number of video wall
+
+v
+
+Line number of video wall
+
+returned value
+
+description
+
+[SUCCESS]Done.
+
+Set the matrix composition work
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the screen of the video wall 1, line 1, column 2 as the preset 1 matrix group, enter the command:
+SET WALL 1 PRESET 1 MATRIX H 2 V 1
+return:
+[SUCCESS]Done.
+
+7.13 Set up the signal source for the video wall preset matrix group
+API joggle
+SET WALL [hdl] PRESET [prs] MATRIX H [h] V [v] SOURCE [enc]
+description
+Set up the signal source for the video wall preset matrix group.
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+prs
+
+[01...09]: Preset the ID number
+
+h
+
+Column number of video wall
+
+v
+
+Line number of video wall
+
+enc
+
+[001...762]: TXID number
+0: Cancel the route
+
+returned value
+
+description
+
+[SUCCESS]Done.
+
+Set success
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the signal source of the video wall 1 preset 1 row 1 as TX 1, input command:
+SET WALL 1 PRESET 1 MATRIX H 2 V 1 SOURCE 1
+return:
+[SUCCESS]Done.
+
+7.14 Set up the video wall screen width direction border
+API joggle
+SET WALL [hdl] H [h] V [v] WIDTH BEZEL BW [b] IW [i]
+description
+Set the border of the width of the video wall screen.
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+h
+
+Column number of video wall
+
+v
+
+Line number of video wall
+79
+
+Chazy Control API Reference
+
+b
+
+[100...1000]: Original image width
+
+i
+
+[100...1000]:, visible image width, i cannot be
+greater than b
+
+returned value
+
+description
+
+[SUCCESS]Done.
+
+Set success
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the screen width direction of video wall 1 row 1 column 1 crop 10%, (BW-IW) / BW = 10%, enter
+command:
+SET WALL 1 H 1 V 1 WIDTH BEZEL BW 1000 IW 900
+return:
+[SUCCESS]Done.
+
+7.15 Set up the video wall bezel
+API joggle
+SET WALL [hdl] H [h] V [v] HEIGHT BEZEL BH [b] IH [i]
+description
+Set the border of the height direction of the video wall screen.
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+
+h
+
+Column number of video wall
+
+v
+
+Line number of video wall
+
+b
+
+[100...1000]: Raw image height
+
+i
+
+[100...1000]:, visible image height, i cannot be
+greater than b
+
+returned value
+
+description
+
+[SUCCESS]Done.
+
+Set success
+
+example
+TELNET Log in to the CHAZY CONTROL
+Set the screen height orientation of video wall 1 row 1 column 10%, (BH-IH) / BH = 10%, enter
+command:
+SET WALL 1 H 1 V 1 HEIGHT BEZEL BH 1000 IH 900
+return:
+[SUCCESS]Done.
+
+7.16 Get the video wall status
+API joggle
+GET WALL [hdl] STATUS
+description
+Get the video wall status
+parameter
+
+description
+
+hdl
+
+[01...09]: Video wall ID number
+80
+
+Chazy Control API Reference
+
+returned value
+
+description
+
+Print the video wall status information
+example
+TELNET Log in to the CHAZY CONTROL
+Get the video wall 1 status information and enter the command:
+GET WALL 1 STATUS
+return:
+================================================================
+CHAZY CONTROL Video Wall Info
+FW Version: 1.00.17
+VW
+
+Col
+
+01 02
+
+Row
+
+CfgSel
+
+Name
+
+02
+
+01
+
+VW1
+
+OutID
+001 002 --- --Cfg
+
+Name
+
+01
+
+TEST1
+
+Class
+
+From
+
+Screen
+
+A
+
+001
+
+H01V02 H02V02
+
+B
+
+001
+
+H01V01
+
+Single From
+H02V01 001
+================================================================
+
+81
+
+Chazy Control API Reference
+
+8. System management module API reference
+8.1 Device search
+API joggle
+SEARCH
+description
+Search for online devices
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+Returns the current system online device
+information
+example
+TELNET Log in to the CHAZY CONTROL
+Search for online devices and enter a command:
+SEARCH
+return:
+[SUCCESS]More device in network will take more time to finish search, please wait...done.
+================================================================
+Search Device Result Info
+==New Encoder
+None
+==System Control Encoder
+Index
+
+IP
+
+001
+
+169.254.010.001 6C:DF:FB:00:87:81 002
+
+MAC
+
+ID
+
+002
+
+169.254.010.003 6C:DF:FB:00:87:82 003
+
+003
+
+169.254.010.002 6C:DF:FB:01:1A:84 001
+
+004
+
+169.254.010.004 6C:DF:FB:01:1A:6C 004
+
+==New Decoder
+None
+==System Control Decoder
+Index
+
+IP
+
+001
+
+169.254.020.002 6C:DF:FB:01:1A:C2 002
+
+MAC
+
+ID
+
+002
+
+169.254.020.004 6C:DF:FB:00:02:EF
+
+003
+
+169.254.020.003 6C:DF:FB:00:F3:66 004
+
+004
+
+169.254.020.001 6C:DF:FB:01:1A:CB 003
+
+001
+
+================================================================
+
+82
+
+Chazy Control API Reference
+
+8.2 View the device search results
+API joggle
+GET SEARCH STATUS
+description
+View the device search results
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+Returns the current system online device
+information
+example
+TELNET Log in to the CHAZY CONTROL
+View the device search results and enter the command:
+GET SEARCH STATUS
+return:
+================================================================
+Search Device Result Info
+==New Encoder
+None
+==System Control Encoder
+Index
+
+IP
+
+MAC
+
+ID
+
+001
+
+169.254.010.001 6C:DF:FB:00:87:81 002
+
+002
+
+169.254.010.003 6C:DF:FB:00:87:82 003
+
+003
+
+169.254.010.002 6C:DF:FB:01:1A:84 001
+
+004
+
+169.254.010.004 6C:DF:FB:01:1A:6C 004
+
+==New Decoder
+None
+==System Control Decoder
+Index
+
+IP
+
+MAC
+
+ID
+
+001
+
+169.254.020.002 6C:DF:FB:01:1A:C2 002
+
+002
+
+169.254.020.004 6C:DF:FB:00:02:EF
+
+003
+
+169.254.020.003 6C:DF:FB:00:F3:66 004
+
+004
+
+169.254.020.001 6C:DF:FB:01:1A:CB 003
+
+001
+
+================================================================
+
+8.3 Clear the device search results
+API joggle
+SEARCH RESET
+83
+
+Chazy Control API Reference
+
+description
+Clear the device search results
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+[SUCCESS]Reset search info.
+
+Clear the device search results
+
+example
+TELNET Log in to the CHAZY CONTROL
+Clear the device search results, enter the command:
+SEARCH RESET
+return:
+[SUCCESS]Reset search info.
+
+8.4 Automatically add new devices to the system
+API joggle
+ADD AUTO ALL
+description
+Automatically add new devices to the system, and call the SEARCH interface to search the online
+device before calling this interface.
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+[SUCCESS]Add scan index 001 device to decoder
+
+New device was added successfully.
+
+003.
+[SUCCESS]Add scan index 002 device to decoder
+004.
+[SUCCESS]Add scan index 003 device to decoder
+002.
+[SUCCESS]Add scan index 004 device to decoder
+001.
+example
+TELNET Log in to the CHAZY CONTROL
+Automatically add new devices to the system and enter the command:
+ADD AUTO ALL
+return:
+[SUCCESS]Add scan index 001 device to decoder 003.
+[SUCCESS]Add scan index 002 device to decoder 004.
+[SUCCESS]Add scan index 003 device to decoder 002.
+[SUCCESS]Add scan index 004 device to decoder 001.
+
+8.5 Add the new TX devices to the system
+API joggle
+84
+
+Chazy Control API Reference
+
+ADD DEV [dev] ENC [enc]
+description
+Add a new TX device to the system, and call the SEARCH interface to search the online device before
+calling this interface.
+parameter
+
+description
+
+dev
+
+SEARCH The Index of the New Encoder in the
+Results
+
+enc
+
+[001...762]: TXID number
+0: The system automatically assigns an ID
+
+returned value
+
+description
+
+[SUCCESS]Add scan index 001 device to encoder
+
+Add TX devices with Index 1 in New Encoder to
+
+004.
+
+the system and assign ID 4
+
+example
+TELNET Log in to the CHAZY CONTROL
+Add TX devices with Index 1 in New Encoder to the system and assign ID 4, enter the command:
+ADD DEV 1 ENC 4
+return:
+[SUCCESS]Add scan index 001 device to encoder 004.
+
+8.6 Add the new RX devices, to the system
+API joggle
+ADD DEV [dev] DEC [dec]
+description
+Add a new RX device to the system, and call the SEARCH interface to search the online device before
+calling this interface.
+parameter
+
+description
+
+dev
+
+SEARCH The Index of the New De coder in the
+Results
+
+dec
+
+[001...762]: R X ID No
+0: The system automatically assigns an ID
+
+returned value
+
+description
+
+[SUCCESS]Add scan index 001 device to decoder
+
+The RX device with Index 1 in New De coder was
+
+001.
+
+added to the system and assigned ID 1
+
+example
+TELNET Log in to the CHAZY CONTROL
+Add RX devices with Index 1 in New De coder to the system and assign ID 1, enter the command:
+ADD DEV 1 DEC 1
+return:
+[SUCCESS]Add scan index 001 device to decoder 001.
+
+8.7 Clear the existing equipment in the system
+API joggle
+85
+
+Chazy Control API Reference
+
+ADD DEV RESET
+description
+Clear the existing equipment in the system, and will Clear the information related to the equipment,
+such as VW.
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+[SUCCESS]Reset all
+
+Clear the existing equipment and related
+
+Encoder/Decoder/Videowall/Search
+
+configuration in the system
+
+configuration.
+example
+TELNET Log in to the CHAZY CONTROL
+Clear the existing equipment in the system, enter the command:
+ADD DEV RESET
+return:
+[SUCCESS]Reset all Encoder/Decoder/Videowall/Search configuration.
+
+86
+
+Chazy Control API Reference
+
+9. CHAZY CONTROL Network configuration API reference
+9.1 Set up the CHAZY CONTROL IP mode
+API joggle
+SET NETWORK [lan] DHCP ON/OFF
+description
+Set the IP mode for the CHAZY CONTROL CONTROL LAN and VIDEO LAN ports.
+parameter
+
+description
+
+lan
+
+LAN1: VIDEO LAN port
+LAN2: CONTROL LAN port
+
+ON/OFF
+
+ON: To enable the DHCP
+OFF: Turn off the DHCP with a static IP
+
+returned value
+
+description
+
+[SUCCESS]Set lan2 DHCP to on.
+
+Set the CONTROL LAN port to the DHCP mode
+
+Use "SET NETWORK REBOOT" command or
+repower device to apply new config!!!
+example
+TELNET Log in to the CHAZY CONTROL
+Set the CONTROL LAN port to the DHCP mode, and enter the command:
+SET NETWORK LAN2 DHCP ON
+return:
+[SUCCESS]Set lan2 DHCP to on.
+Use "SET NETWORK REBOOT" command or repower device to apply new config!!!
+
+9.2 Set up the CHAZY CONTROL IP address
+API joggle
+SET NETWORK [lan] STATIC IP [ip]
+description
+Set the IP address of CHAZY CONTROL CONTROL LAN and VIDEO LAN ports, only valid when the
+network port is set to static IP mode.
+parameter
+
+description
+
+lan
+
+LAN1: VIDEO LAN port
+LAN2: CONTROL LAN port
+
+ip
+
+IP addresses, such as 169.254.20.10
+
+returned value
+
+description
+
+[SUCCESS]Set lan2 IP address to 192.168.070.040.
+
+Set the IP of the CONTROL LAN port to
+
+Use "SET NETWORK REBOOT" command or repower
+
+192.168.70.40
+
+device to apply new config!!!
+example
+
+87
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the IP of the CONTROL LAN port to 192.168.70.40, enter the command:
+SET NETWORK LAN2 STATIC IP 192.168.70.40
+return:
+[SUCCESS]Set lan2 IP address to 192.168.070.040.
+Use "SET NETWORK REBOOT" command or repower device to apply new config!!!
+
+9.3 Set up the CHAZY CONTROL gateway address
+API joggle
+SET NETWORK [lan] STATIC GATEWAY [gw]
+description
+Set the gateway address of CHAZY CONTROL CONTROL LAN and VIDEO LAN ports, only valid when
+the network port is set to static IP mode.
+parameter
+
+description
+
+lan
+
+LAN1: VIDEO LAN port
+LAN2: CONTROL LAN port
+
+gw
+
+Gateway address, such as 169.254.0.1
+
+returned value
+
+description
+
+[SUCCESS]Set lan2 gateway address to 192.168.070.001.
+
+The gateway address of the CONTROL
+
+Use "SET NETWORK REBOOT" command or repower device
+
+LAN port is 192.168.70.1
+
+to apply new config!!!
+example
+TELNET Log in to the CHAZY CONTROL
+Set the gateway address of the CONTROL LAN port to 192.168.70.1, enter the command:
+SET NETWORK LAN2 STATIC GATEWAY 192.168.70.1
+NET RB
+return:
+[SUCCESS]Set lan2 gateway address to 192.168.070.001.
+Use "SET NETWORK REBOOT" command or repower device to apply new config!!!
+
+9.4 Set the CHAZY CONTROL subnet mask
+API joggle
+SET NETWORK [lan] STATIC MASK [mask]
+description
+Set the subnet mask for CHAZY CONTROL CONTROL LAN and VIDEO LAN ports only when the port
+is set to static IP mode.
+parameter
+
+description
+
+lan
+
+LAN1: VIDEO LAN port
+LAN2: CONTROL LAN port
+
+mask
+
+Subnet mask, such as 255.255.0.0
+
+returned value
+
+description
+
+[SUCCESS]Set lan2 subnet mask address to
+
+Set the subnet mask of the CONTROL
+88
+
+Chazy Control API Reference
+
+255.255.255.000.
+
+LAN port to 255.255.255.0
+
+Use "SET NETWORK REBOOT" command or repower device
+to apply new config!!!
+example
+TELNET Log in to the CHAZY CONTROL
+Set the subnet mask of the CONTROL LAN port to 255.255.255.0, enter the command:
+SET NETWORK LAN2 STATIC MASK 255.255.255.0
+return:
+[SUCCESS]Set lan2 subnet mask address to 255.255.255.000.
+Use "SET NETWORK REBOOT" command or repower device to apply new config!!!
+
+9.5 Restart the CHAZY CONTROL network card
+API joggle
+SET NETWORK REBOOT
+description
+Restart the CHAZY CONTROL network card, after modifying the network parameters, you need to
+send this API to make the configuration effective.
+parameter
+
+description
+
+not have
+returned value
+
+description
+
+[SUCCESS]Set network reboot and apply new
+
+The network card was restarted successfully
+
+config.
+example
+TELNET Log in to the CHAZY CONTROL
+Restart the network card and enter the command:
+SET NETWORK REBOOT
+return:
+[SUCCESS]Set network reboot and apply new config.
+
+9.6 Set the CHAZY CONTROL TELNET port number
+API joggle
+SET NETWORK TELNET PORT [port]
+description
+Set the CHAZY CONTROL TELNET port number, which default to 23
+parameter
+
+description
+
+port
+
+TELNET Port number, with a maximum value of
+65535
+
+returned value
+
+description
+
+[SUCCESS]Set telnet port to 0030.
+
+Set the TELNET port number to 30
+
+example
+
+89
+
+Chazy Control API Reference
+
+TELNET Log in to the CHAZY CONTROL
+Set the TELNET port number to 30, and enter the command:
+SET NETWORK TELNET PORT 30
+return:
+[SUCCESS]Set telnet port to 0030.
+
+9.7 Set up the CHAZY CONTROL HTTPS switch
+API joggle
+SET NETWORK HTTPS ON/OFF
+description
+Set the CHAZY CONTROL HTTPS switch, and the HTTPS is not turned on by default.
+parameter
+
+description
+
+ON/OFF
+
+ON: Open the HTTPS
+OFF: Turn off the HTTPS
+
+returned value
+
+description
+
+[SUCCESS]Set web gui https on.
+
+open HTTPS
+
+example
+TELNET Log in to the CHAZY CONTROL
+Open the HTTPS and enter the command:
+SET NETWORK HTTPS ON
+return:
+[SUCCESS]Set web gui https on.
+
+9.8 Modify the CHAZY CONTROL domain name
+API joggle
+SET NETWORK DNS hostname
+description
+Modify the domain name of CHAZY CONTROL, and the default domain name is controller.local。
+parameter
+
+description
+
+hostname
+
+Domain name, only support letters, numbers, and
+special characters such as _.
+
+returned value
+
+description
+
+[SUCCESS]Set DNS domain name to test.local.
+
+Set the domain name to the test.local
+
+System will restart, please wait...
+example
+TELNET Log in to the CHAZY CONTROL
+Set the domain name to the test.local, Enter the command:
+SET NETWORK DNS test
+return:
+[SUCCESS]Set DNS domain name to test.local.
+System will restart, please wait...
+
+90
+
+
