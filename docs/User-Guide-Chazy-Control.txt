@@ -1,0 +1,1062 @@
+CHAZY CONTROL
+Central Management Box for CHAZY 4K AV
+over IP series
+
+User Manual
+VER 1.0
+
+VER1.0
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Thank you for purchasing this product
+For optimum performance and safety, please read these instructions carefully before connecting,
+operating or adjusting this product. Please keep this manual for future reference.
+
+Surge protection device recommended
+This product contains sensitive electrical components that may be damaged by electrical
+spikes, surges, electric shock, lighting strikes, etc. Use of surge protection systems is highly
+recommended in order to protect and extend the life of your equipment.
+
+Table of Contents
+1. Introduction........................................................................................................................ 1
+2. Features. ............................................................................................................................ 1
+3. Package Contents. ........................................................................................................... 1
+4. Specifications. ................................................................................................................... 2
+5. Operation Controls and Functions. ................................................................................. 2
+5.1 Front Panel. ................................................................................................................. 2
+5.2 Rear Panel. .................................................................................................................. 3
+5.3 IR Pin Definition. .......................................................................................................... 3
+6. Rack Mounting Instruction ................................................................................................ 4
+6.1 6U Rack Mounting........................................................................................................ 4
+6.2 1U Rack Mounting........................................................................................................ 5
+7. Web GUI Operation Guide .................................................................................................. 6
+7.1 Preparation before Entering the System. .................................................................. 6
+7.2 Functions and Operation ............................................................................................ 14
+7.2.1 Device. ................................................................................................................ 14
+7.2.2 Matrix.................................................................................................................. 24
+7.2.3 Video Wall.......................................................................................................... 26
+7.2.4 Dante .................................................................................................................. 29
+7.2.5 User. ................................................................................................................... 34
+7.2.6 Controller Settings............................................................................................. 36
+7.2.7 Firmware Update................................................................................................ 37
+7.2.8 Password ............................................................................................................ 38
+8. Application Example. ....................................................................................................... 39
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+1. Introduction
+This Video over IP Controller is used to control and manage Chazy 4K and Dante IP products. It
+supports dual 1G network ports, with support for network isolation of Control network and
+Multicast video distribution network. The product supports Web GUI/TCP/RS -232/IR/GPIO
+controls and PoE.
+
+2. Features
+. Support for Auto, DHCP and Static IP configurations
+. HTTPS, SSH, SFTP compatible
+. Built-in Web GUI, with Drag & Drop interface
+. Live video previews
+. Video, audio, RS -232, IR, USB control and management of the distributed system
+. Dual network ports (VIDEO LAN port supports PoE) to isolate Controls and Multicast networks.
+. Support LAN/RS-232 port control and third-party control systems via API
+. Support IR signal receiving and loop output (3.5mm audio jack, 12V level)
+. 4 channel GPIO control ports (5V/12V optional level)
+. Multiple circuits protection, lightning protection and ESD design
+3. Package Contents
+. 1x Chazy Control
+. 1x 20kHz-60kHz 12V IR Receiver Cable (1.5 meters)
+. 1x IR Blaster Cable (1.5 meters)
+. 2x 3-pin 3.81mm Phoenix Connector (Male)
+. 1x 6-pin 3.81mm Phoenix Connector (Male)
+. 2x Mounting Ears
+. 4x Machine Screws (KM3*6)
+. 1x 12V/1A Locking Power Adaptor
+
+1 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+4. Specifications
+Technical
+Network Bandwidth
+
+100M/1G
+
+Transmission Distance 100m CAT 5E/6/6A/7
+
+Control Ports
+
+2x 1G LAN [RJ45 connector] [VIDEO LAN support POE]
+1x IR IN [3.5mm audio jack, 12V level]
+1x IR OUT [3.5mm audio jack]
+1x DIGITAL I/O [6 -pin 3.81mm phoenix connector]
+2x RS -232 [3-pin 3.81mm phoenix connector]
+1x UPDATE [Micro USB, 5 -pin female]
+
+ESD Protection
+
+IEC 61000-4-2:
+±8kV (Air-gap discharge) & ±4kV (Contact discharge)
+
+Dimensions
+
+204mm (W) × 98.5mm (D) × 21.5 mm (H)
+
+Housing
+
+Metal Enclosure
+
+Color
+
+Turtle Aqua
+
+Weight
+
+508g
+
+Power Supply
+
+12V/1A
+
+Power Consumption
+
+1.8W (Max.)
+
+Operating Temperature 0°C ~ 40°C / 32°F ~ 104°F
+Storage Temperature
+
+-20°C ~ 60°C / -4°F ~ 140°F
+
+Operating Humidity
+
+20% ~ 80% RH (relative humidity, non-condensing)
+
+Storage Humidity
+
+10% ~ 90% RH (relative humidity, non-condensing)
+
+5. Operation Controls and Functions
+5.1 Front Panel
+
+No.
+
+Name
+
+Function Description
+
+1
+
+Press and hold this button (about 10 seconds) until STATUS
+RESET Button LED starts flashing, Controller will be reset automatically.
+
+2
+
+POWER LED
+
+The red LED will light on when the Controller is powered on.
+
+3
+
+STATUS LED
+
+The status LED will flash in yellowish-green every 1 second
+until Controller boots up completely and Control LAN is
+ready, then it becomes solid.
+
+4
+
+UPDATE
+
+Firmware update port.
+
+2 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+5.2 Rear Panel
+
+No.
+
+Name
+
+Function Description
+
+1
+
+DC 12V
+
+DC 12V/1A power input port.
+
+2
+
+VIDEO LAN
+(POE)
+
+1G Video LAN port, supporting PoE.
+Note: When POE is enabled, DC 12V/1A power supply is not
+required.
+
+3
+
+CONTROL
+LAN
+
+The TCP/IP control network port.
+
+4
+
+3-pin Phoenix
+Connectors
+
+Two identical RS -232 serial communication ports.
+
+5
+
+6-pin Phoenix
+Connector
+
+4 channel I/O level outputs, 1 channel grounding,
+1 channel power supply (supports up to 12V/0.5A) to the
+outside.
+
+6
+
+IO LEVEL
+DIP Switch
+
+Used to control I/O level output and VOUT voltage.
+Switch to left: 5V I/O level output, VOUT is 5V.
+Switch to right: 12V I/O level output, VOUT is 12V.
+
+7
+
+IR IN
+
+12V IR signal input port.
+
+8
+
+IR OUT
+
+IR signal output port.
+
+5.3 IR Pin Definition
+
+3 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+6. Rack Mounting Instruction
+6.1 6U Rack Mounting
+This Controller can be mounted in a standard 6U rack (Please contact your supplier for 6U
+rack sale). The mounting steps are as follows:
+Step 1: Use included screws to fix two mounting ears on the Controller, as shown in the
+figure below:
+
+Step 2: Insert the Controller with mounting ears into a 6U rack (up to 10 units can be installed
+vertically), as shown in the figure below:
+
+Step 3: Use screws to fix mounting ears on the rack to complete the mounting, as shown in
+the figure below:
+
+4 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+6.2 1U Rack Mounting
+This Controller also can be mounted in a standard 1U rack (up to 4 units can be installed
+horizontally). The mounting steps are as follows:
+Step 1: Stack two Controllers on top of each other, then use included screws to fix two 1U
+rack panels on the Controllers, as shown in the figure below:
+
+Step 2: Fix two 1U rack panels on another two stacked Controllers in the same way, then
+use screws to fix two 1U rack panels together, as shown in the figure below:
+
+Step 3: Fasten screws between two 1U rack panels, so that four Controllers are mounted in
+a 1U rack, as shown in the figure below:
+
+5 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+7. Web GUI Operation Guide
+7.1 Preparation before Entering the System
+You can use Controller’s Web GUI to control all IP products at the Switch.
+The operation steps are as follows.
+Step 1: Input the Controller’s default IP address (Control LAN port: 192.168.6.100; Video
+LAN port: 169.254.8.100 ) or the URL (http://controller.local) into the Web browser address
+bar on the PC to enter the Web GUI login interface.
+
+At first login, please select the initial username (admin), input the initial password (admin),
+and select the desired language on the above login interface. Then click “Login” to enter the
+password modification interface as shown below.
+Please set a six-digit password using letters or numbers, then use the new password to
+log in to the Web GUI.
+
+6 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+For the first time, you need to set up the system, as shown in the following figure:
+
+Step 2: Click the “Close” button to load an existing system in web page directly, or click
+“Next” button to go to the next step.
+
+7 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+On this interface, you need to set the IP mode of Video LAN.
+Mode 1: Automatically managed by Controller Box.
+The IP addresses of the Video LAN port, Encoders and Decoders are assigned by the
+Controller automatically, and the connection method is as following.
+
+8 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Step 3: Click the “Next” button and wait for the completion to enter the interface as shown in
+the figure below.
+
+9 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+▪ If you select “Automatically add Encoders and Decoders to system”, and click the “Next”
+button to enter the Device page, the system starts to search for devices. All the connected
+devices will be searched and added into the system (presented in the Encoder/Decoder list)
+automatically, as shown below.
+
+▪ If you select “List all discovered Encoders and Decoders”, and click the “Next” button to
+enter the Device page, the system starts to search for devices. All the connected devices
+will be searched and listed in the Device list. Then an inquiry box will pop up. If selecting
+“Yes”, all searched devices will be added into the system directly; If selecting “No”, you
+need to manually add them into the system by clicking the “Add” button behind each device
+one by one or clicking “Add All Into System”.
+
+10 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+If you want to change the IP mode of Video LAN, you can click “Search Device Via Wizard”
+on the Device interface, and switch back to the IP mode select interface.
+Mode 2: DHCP mode.
+The IP addresses of the Video LAN port, Encoders and Decoders are assigned by the Router
+automatically, and the connection method is as following.
+
+Select “DHCP Mode” on the interface shown below, and click “Next”.
+
+11 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+T
+
+The rest of the steps are the same as the Mode 1 operation.
+Mode 3: Static IP mode by manual settings.
+The IP addresses of the Video LAN port, Encoders and Decoders are manually set by the
+user, and the connection method is as following.
+
+12 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Select “Static IP mode by manual settings” on the interface shown below, and click “Next”.
+
+After entering the interface shown in the figure below, manually set the IP address, subnet
+mask and gateway of the Video LAN.
+
+Note:
+The IP network domain of the Video LAN port must be different from that of the Control LAN
+port.
+
+13 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+For example, we set the Video LAN network as shown in the above figure, and click the
+“Next“ button. After the progress reaches 100%, enter the interface as shown in the figure
+below.
+
+On this interface, you can set the IP address range of Encoders and Decoders.
+After the setting is complete, click the “Next” button to enter the interface as shown in the
+figure below.
+
+The rest of the steps are the same as the Mode 1 operation.
+
+14 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+7.2 Functions and Operation
+7.2.1 Device
+On this page, you can click the Encoder/Decoder tab to check the information of the
+Encoders and Decoders in the system, such as ID, Type, Name, MAC address, IP address,
+Firmware version, Online/Offline Status, Up Time, RX Link, Member/Source. Besides, you
+can configure each Encoder/Decoder after clicking the drop-down icon on the left side of ID.
+
+Note: The controller can simultaneously control two types of Encoders and Decoders
+(distinguished by Gen 1/2 ) in one system.
+
+Encoder Configuration
+Basic Settings
+
+. Name: The name of the Encoder can be changed. (The maximum length is 16 characters.
+Special characters are not supported.)
+Note: The Dante AV -ATM device can only be renamed here. The characters “ ”, “_” and “ ’ ”
+that are not allowed for showing in Dante page will be replaced with “-”. After renaming, the
+new name will be refreshed synchronously on the Dante page.
+. Change ID: The ID of the Encoder can be set. (ID range:1 -762)
+Note: Both ID and name can not be duplicated.
+. Power LED Flashing: Click the drop-down menu to select the power LED flash status.
+Off: The front panel power LED is steady on after flash status is turned off.
+
+15 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Flashing: The front panel power LED flashes.
+Flashing 90s then off: The front panel power LED is steady on after flashing for 90s.
+. Preview: The preview of the Encoder.
+
+A/V Settings
+
+. EDID: Click the drop-down menu to select the EDID for the Encoder.
+. Copy EDID: Click the drop-down menu to select a Decoder for EDID copy.
+. Audio: Click the drop-down menu to select the audio source (HDMI/Analogue).
+
+(1) When HDMI is selected, Encoder HDMI input is the audio source for Encoder HDMI
+output and Decoder audio output.
+(2) When Analogue is selected, Encoder audio input is the audio source for Encoder HDMI
+output and Decoder audio output.
+
+.
+
+Transmission Mode: Click the drop-down menu to select the transmission mode
+(Multicast/Unicast).
+
+. Dante Bridge: Click the drop-down menu to select On/Off to turn on/off the Dante bridge
+function. When set to “On”, the Encoder will receive the audio from Dante network, and then
+bridge it to the AV over IP system to be the audio source for the Decoders without Dante
+function.
+Note: The Encoder HDMI loop output keeps outputting the native audio source, and will not
+be influenced by the setting here.
+
+Network Settings
+. IP Mode: Click the drop-down menu to set the IP mode (Static/DHCP).
+. IP Address: The IP address of the Encoder.
+. Subnet Mask: The Subnet Mask of the Encoder.
+
+. Gateway: The Gateway of the Encoder.
+Note:
+(1) If the IP mode is set to “Static”, you can manually set the IP Address, Subnet Mask and
+Gateway as required. Then click “Apply”, the Encoder will immediately reboot to take effect.
+(2) If the IP mode is set to “DHCP”, it will search and be filled with the IP Address assigned
+by the router automatically.
+(3) If the Encoder is actually alive in the system but with incorrect network segment settings,
+even though the Encoder is offline, its network settings including IP address can be changed
+and set.
+16 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Dual LAN Port Settings
+. Dante VLAN IP Mode: The Dante VLAN IP mode (Static/DHCP) of the Encoder.
+. Dante VLAN IP Address: The Dante VLAN IP address of the Encoder.
+. Dante VLAN Subnet Mask: The Dante VLAN Subnet Mask of the Encoder.
+. Dante VLAN Gateway: The Dante VLAN Gateway of the Encoder.
+. Dante VLAN: Click the drop-down menu to select On/Off to turn on/off the Dante VLAN.
+
+. Dante VLAN Tag (2~4095): The Dante VLAN tag of the Encoder.
+
+Hardware Usage
+
+. CEC Pin Usage: Click the drop-down menu to set the CEC pin usage (ARC/
+eARC/CEC/Off). After switching, the Encoder will immediately reboot to take effect.
+. ARC/eARC Return From: Click the drop-down menu to select a Decoder
+for ARC/eARC audio return.
+Note: Only Encoders with ARC/eARC function can perform this setting.
+
+. Capability of Amplifier On HDMI IN Port: It indicates the ARC capability
+supported by the Amplifier.
+Note: When the amplifier on HDMI IN port only supports ARC, and the TV
+connected to the Decoder only supports eARC, the setting of “eARC Down grade
+To ARC” on the Decoder needs to set “On” to achieve the audio path working
+normally. The eARC downgrade of the Dec oder will also apply onto all Encoders
+that select this Decoder.
+. Network Interface Usage: Click the drop-down menu to set the network port
+(Fiber/Copper).
+Note: Only Encoders that integrate Copper and Fiber ports can perform this setting.
+RS -232 Settings
+
+. RS -232 Command Relay: Click the drop-down menu to select On/Off to turn
+on/offthe RS -232 command relay function.
+
+. Parity: Click the drop-down menu to set the parity.
+
+17 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+. Baud Rate: Click the drop-down menu to set the baud rate.
+. Data Bits: Click the drop-down menu to set the data bits.
+. Stop Bits: Click the drop-down menu to set the stop bits.
+After setting, click “Apply” to take effect.
+
+Port Settings
+
+. IR Voltage: Click the drop-down menu to select the 5V/12V IR voltage.
+. IO Voltage: Click the drop-down menu to select the 5V/12V IO voltage.
+. IO 1 Direction: Click the drop-down menu to set the IO 1 direction (Input/Output).
+. IO 1: Click the drop-down menu to set the IO 1 level (Low/High).
+. IO 2 Direction: Click the drop-down menu to set the IO 2 direction (Input/Output).
+. IO 2: Click the drop-down menu to set the IO 2 level (Low/High).
+. Relay 1: Click the drop-down menu to select Open/Close Relay 1.
+. Relay 2: Click the drop-down menu to select Open/Close Relay 2.
+
+Reboot: Click the Reboot button to reboot the Encoder.
+Replace: Click to replace the offline Encoder (which is in the system) with an online Encoder
+(which is not in the system).
+For example, follow steps below to replace Encoder 001 with Encoder 006:
+Step 1. Unplug the network cable of Encoder 001 to make it be offline. (Using external
+power supply.)
+Step 2. Connect Encoder 006 to the system.
+Step 3. Click the Replace button, which is clickable after Encoder 001 is set to be offline.
+Then a window will pop up, as shown below. At this moment, click “Scan for Devices” to
+search devices. After Encoder 006 is searched, select it and click “Replace” to replace
+Encoder 001.
+
+Encoder Discovered (169.254.10.7)
+
+18 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Remove: Click the Remove button to remove the Encoder from the system.
+Remove All: Click this button to remove all Encoders from the system.
+Factory Reset: Click this button to restore the Encoder to factory settings.
+Decoder Configuration
+
+Basic Settings
+
+. Name: The name of the Decoder can be changed. (The maximum length is 16 characters.
+Special characters are not supported.)
+Note: The Dante AV -ATM device can only be renamed here. The characters “ ”, “_” and “ ’ ”
+that are not allowed for showing in Dante page will be replaced with “-”. After renaming, the
+new name will be refreshed synchronously on the Dante page.
+. Change ID: The ID of the Decoder can be set. (ID range:1 -762)
+Note: Both ID and name can not be duplicated.
+. Power LED Flashing: Click the drop-down menu to select the power LED flash status.
+Off: The front panel power LED is steady on after flash status is turned off.
+Flashing: The front panel power LED flashes.
+Flashing 90s then off: The front panel power LED is steady on after flashing for 90s.
+
+. Hotkey Setting: You can set up to 20 sets of hotkeys for Decoders. Click the “Setting”
+button to pop up the Hotkey Setting window, as shown in the following figure. Click the “+”
+icon to create a new hotkey, and then set the ID, function key, toggle key, action, signal/
+target separately. Click the “-” icon to delete the corresponding hotkey settings.
+
+19 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+For example:
+After completing the hotkey settings for ID 1 and 2, as shown in the above figure. Press the
+function key “Left Ctrl” and toggle key “1” simultaneously 3 times in 1 second to execute the
+action “Subscribe From” to the signal “Encoder 002”, that is, switch the signal source of
+Decoder 001 to Encoder 002. If press the function key “Left Ctrl” and toggle key “2”
+simultaneously 3 times in 1 second, the action “Share Source To” can be executed to the
+target “Decoder 003”, that is, the current signal source “Encoder 002” of Decoder 001 will
+be switched to Decoder 003 at the same time.
+Notes:
+(1) Only Encoders and Decoders that support USB KVM functionality can perform hotkey
+settings.
+(2) The toggle keys are limited to the keys within the red box on the keyboard, as shown in
+the following figure.
+
+. Preview: The preview of the Decoder.
+Besides, you can click the drop -down menu of “Source” on the Decoder list to select signal
+source for the Decoder.
+
+20 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+A/V Settings
+. Video Output: Click the drop-down menu to select On/Off to turn on/off the video output.
+. Video Mute: Click the drop-down menu to select On/Off to mute/unmute the video output.
+
+. Rotation & Flip: Click the drop-down menu to select Rotate 0°/90°/180°/270° to rotate
+the image, or select Flip Horizontal/Vertical to flip the image.
+. Scaling: Click the drop-down menu to set the video output scaling resolution.
+. Show ID OSD: Click the drop-down menu to select On/Off to turn on/off the ID OSD
+display.
+
+. Output Mode: In the Video Wall mode, you can click the drop-down menu to select Matrix
+
+or Video Wall as the output mode. While, in the Matrix mode, this option cannot be selected.
+
+. Transmission Mode: Click the drop-down menu to select the transmission mode
+(Multicast/Unicast).
+. Audio Source On Outputs: Click the drop-down menu to select the audio source for
+Decoder HDMI output and analog audio output.
+Native: Use AV over IP system audio stream as the audio source.
+Dante: Use Dante audio from Dante network as the audio source.
+In case of setting the audio routing of the Decoder in the Dante page, “Dante” must be
+selected.
+. Dante Bridge: Click the drop-down menu to select On/Off to turn on/off the Dante bridge
+function. When set to “On”, the Decoder will bridge the audio stream which the Decoder
+subscribes into Dante network, so that the audio stream in AV over IP system can be used
+for Dante devices in Dante network.
+
+Locked Signal Routing
+Different signals can be independently routed between Encoders and Decoders, including
+Video, Audio, IR, RS -232, USB and CEC; When clicking the drop-down menu and selecting
+“Follow”, the corresponding signal comes from the current Encoder.
+For example, follow steps below to change the video routing of Decoder 001 to be from
+Encoder 002.
+Step 1. Click the drop-down menu of Video to select “Encoder 002”.
+
+21 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Step 2. Switch to the Matrix page and you will see a red frame on Decoder 001.
+
+Step 3. Double-click the preview image of Decoder 001 to check the current settings. The
+video source has been locked to Encoder 002, while other signals still follow Encoder 001,
+as shown in the figure above. And you can change the source of audio, IR, RS -232, USB
+and CEC in the same way.
+In addition, you can click the drop-down menu of USB Data to select On/Off to turn on/off
+the USB data.
+
+Network Settings
+
+. IP Mode: Click the drop-down menu to set the IP mode (Static/DHCP).
+. IP Address: The IP address of the Decoder.
+. Subnet Mask: The Subnet Mask of the Decoder.
+. Gateway: The Gateway of the Decoder.
+
+Note:
+(1) If the IP mode is set to “Static”, you can manually set the IP Address, Subnet Mask and
+Gateway as required. Then click “Apply”, the Decoder will immediately reboot to take effect.
+(2) If the IP mode is set to “DHCP”, it will search and be filled with the IP Address assigned
+by the router automatically.
+(3) If the Decoder is actually alive in the system but with incorrect network segment settings,
+even though the Decoder is offline, its network settings including IP address can be changed
+and set.
+
+22 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Dual LAN Port Settings
+① Dante VLAN IP Mode: The Dante VLAN IP mode (Static/DHCP) of the Decoder.
+② Dante VLAN IP Address: The Dante VLAN IP address of the Decoder.
+③ Dante VLAN Subnet Mask: The Dante VLAN Subnet Mask of the Decoder.
+④ Dante VLAN Gateway: The Dante VLAN Gateway of the Decoder.
+⑤ Dante VLAN: Click the drop-down menu to select On/Off to turn on/off the Dante VLAN.
+⑥ Dante VLAN Tag(2~4095): The Dante VLAN tag of the Decoder.
+
+Hardware Usage
+
+. CEC Pin Usage: Click the drop-down menu to set the CEC pin usage (ARC/eARC/CEC/
+Off). After switching, the Decoder will immediately reboot to take effect.
+. Sink Capability: It indicates the ARC capability eARC/ARC/None supported by the TV.
+. Audio Return Path: Click the drop-down menu to select the audio return path (ARC/
+S/PDIF).
+. eARC Downgrade To ARC: When the amplifier on HDMI IN port only supports ARC, and
+the TV connected to the Decoder only supports eARC, the setting of “eARC Downgrade To
+ARC” needs to set “On” to achieve the audio path working normally. The eARC downgrade
+of the Decoder will also apply onto all Encoders that select this Decoder.
+Note: The settings of “Sink Capability”, “Audio Return Path” and “eARC Downgrade To ARC”
+are available only for Decoders that support ARC/eARC.
+. Network Interface Usage: Click the drop-down menu to set the network port (Fiber/
+Copper).
+Note: Only Decoders that integrate Copper and Fiber ports can perform this setting.
+23 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+RS -232 Settings
+
+. RS -232 Command Relay: Click the drop-down menu to select On/Off to turn on/off the
+RS -232 command relay function.
+Note: When the RS-232 command relay function is turned on, the Decoder’s locked signal
+routing function is disabled.
+. Parity: Click the drop-down menu to set the parity.
+. Baud Rate: Click the drop-down menu to set the baud rate.
+. Data Bits: Click the drop-down menu to set the data bits.
+. Stop Bits: Click the drop-down menu to set the stop bits.
+After setting, click “Apply” to take effect.
+
+Port Settings
+
+. IR Voltage: Click the drop-down menu to select the 5V/12V IR voltage.
+. IO Voltage: Click the drop-down menu to select the 5V/12V IO voltage.
+. IO 1 Direction: Click the drop-down menu to set the IO 1 direction (Input/Output).
+. IO 1: Click the drop-down menu to set the IO 1 level (Low/High).
+. IO 2 Direction: Click the drop-down menu to set the IO 2 direction (Input/Output).
+. IO 2: Click the drop-down menu to set the IO 2 level (Low/High).
+. Relay 1: Click the drop-down menu to select Open/Close Relay 1.
+. Relay 2: Click the drop-down menu to select Open/Close Relay 2.
+
+Reboot: Click the Reboot button to reboot the Decoder.
+Replace: Click to replace the offline Decoder (which is in the system) with an online Decoder
+(which is not in the system). The method to replace Decoders is the same as the Encoder
+replacement.
+Remove: Click the Remove button to remove the Decoder from the system.
+Remove All: Click this button to remove all Decoders from the system.
+Factory Reset: Click this button to restore the Decoder to factory settings.
+
+24 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Device
+
+. Search Device: Click this button to search devices which are not in the system.
+. Search Device Via Wizard: Click this button to switch back to the IP mode select
+
+interface and follow the Wizard to set up the system.
+. Add All Into System: Click this button to add all searched devices into the system, then
+the devices will be listed on the Encoder/Decoder list.
+
+7.2.2 Matrix
+Matrix Switching Function
+
+. Left-click the Encoder and drag it to Decoder, then release the mouse to realize one -toone switching.
+
+. Left-click the Encoder and drag it to All Decoders, then release the mouse to realize oneto-all switching.
+Note: Encoders can only be dragged to the Decoder preview of the same type to achieve
+signal switching. For one -to-all switching, only the Decoders of the same type will output
+the same signal.
+
+. Left-click the Encoder and drag it to multiple Decoders, then release the mouse to realize
+one-to-many switching.
+
+25 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Disconnect the Signal Connection
+Click the “No Source” image in the Encoder preview list with the left mouse button and drag
+it to the Decoder preview image. Release the mouse to disconnect the Decoder from the
+signal source, and the corresponding display will show “No Source”. If you drag the “No
+Source” image to “All Decoders” and release the mouse, a prompt window will pop up as
+shown below. Manually enter “YES” and then click “Yes”, all Decoder signal sources in
+matrix mode will be disconnected. After that, you need to configure Encoders for Decoders
+again. Therefore, please proceed with caution.
+
+Signal Routing Query
+Double-click the preview image of Decoder to check the Video/Audio/IR/RS-232/USB
+corresponding relationship between the Encoder and Decoder.
+
+26 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+7.2.3 Video Wall
+
+Video Wall Creation
+On the Video Wall List interface of this page, you can create and configure video wall as
+required. Please follow below steps to create and configure a video wall.
+Step 1: Click “Create”, a pop-up window will be shown as below.
+
+You can set the Video Wall ID, Video Wall Name, Row Number and Column Number. Then
+click “Go” to create the video wall.
+Note:
+(1) Up to 9 video walls can be created.
+(2) The video wall name can be changed after the video wall is created.
+Step 2: Select the video wall that you want to configure, then click “Assign Decoder” at the
+bottom of the Video Wall List interface to enter the Decoder assignment interface. Click each
+screen to select the corresponding Decoder device, then click “Apply” to take effect.
+
+27 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Notes: A Decoder can only be assigned to one video wall.
+Step 3: Click “Class Preset” to enter the class configuration preset interface, then click each
+screen to select the corresponding Class as required (the same class name will form a video
+wall, you can create a regular or irregular video wall by Class Preset). Then click “Apply” to
+take effect.
+The preset name can be changed with letters or numbers (max length: 16 characters).
+
+Besides, you can click the drop -down menu icon behind the preset name to switch different
+presets (the selected preset will be high-lighted in Settings), click “Create Preset” to create
+up to 9 configurations for different application scenarios, click “Clear” to clear and reset video
+wall class settings, or click “Delete” to delete the current class preset from the system.
+After setting, you should click “Apply” to take effect.
+Step 4: Click “Border Adjustment” to enter the Border Adjustment interface, then click the
+drop-down menu to set the Base Width, Image Width, Base Height and Image Height.
+Finally, click “Apply” to adjust the border of each Decoder, or click “Apply All” to adjust the
+borders of all Decoders.
+
+Note: The Base value cannot be more than 2 times the Image value.
+
+28 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Video Wall Source
+
+After the video wall is created and configured, you can click the Video Wall Source tab to
+check the video wall preview, video wall class, and its corresponding signal source. You can
+click the “VW” icon on the preview of video wall to switch different video walls, or click the
+“Pre” icon to switch different presets.
+Besides, you can directly drag Encoders to the video wall to change signal sources. If you
+drag “No Source” to the video wall, then the signal source of the video wall will be
+disconnected, and the corresponding windows will display “No Source”.
+
+Note:
+(1) If the Encoder is offline, it can’t be dragged to the matrix of video wall.
+(2) Only Encoders of the same type can be dragged to the video wall to switch signals.
+
+29 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Video Wall Remove
+If you want to delete a video wall, just select the video wall on the “Video Wall List”, then
+click “Remove”. A prompt window will pop up and you can delete it after clicking “Yes”.
+
+Notes:
+(1) Each Decoder can be set into a part of a video wall array. Each system can contain
+multiple video walls with different sizes. Each video wall can be assigned to different
+screens and different layouts that range from 1x2 up to 9x9.
+(2) The controller creates and manages the video wall configurations and provides a
+simplified control interface and API commands to third party control system.
+
+7.2.4 Dante
+
+Routing
+All devices in the system are displayed on this interface. Before setting the Dante routing,
+you can filter devices as required by checking the items on the left side of the interface, or
+directly enter the filter items in the input box of Filter Transmitters/Filter Receivers. If
+clicking “Clear All”, all filter items will be cleared.
+
+30 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Click the “+” icons of Transmitters and Receivers to expand devices, then set the Dante
+routing according to your need.
+The Dante routing of video or audio L/R channel can be set independently. After pairing the
+Dante AV -ATM devices on the Routing interface, video routing will refresh synchronously on
+the Matrix interface. At the same time, USB, IR, RS -232, CEC and audio routing will also
+follow the configuration and synchronize the refresh. Similarly, the video routing of Dante
+AV-ATM devices will be refreshed synchronously on the Routing interface after pairing videos
+on the Matrix interface.
+Device Info
+
+The Device Info interface displays the information of devices in the system, including ID,
+name, model name, product version, Dante version, primary address, primary link speed,
+secondary address and secondary link speed. In addition, you can view details or configure
+each device after clicking the drop-down icon on the left side of ID.
+Device Configuration
+
+. Receive: The Receiver Channels displays the current receiver channels and the channels
+they are routed to. You can filter the channels by entering the items in the input box of
+Available Channels.
+
+31 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+. Transmit: The Transmit Channels displays the selected transmit channels, and you can
+rename each channel. The Multicast Transmit Flows displays the current multicast flow, and
+you can add new multicast flows by clicking the “+” icon or delete the multicast flow by
+clicking “Delete”.
+
+. Status: You can view the manufacturer information (model name/manufacturer/product
+version), Dante information (Dante model/Dante software version) and interfaces (IP address/
+Mac Address).
+
+. Device Config: You can view/set the sample rate (44.1k/48k/88.2k/98k), encoding formats
+
+(PCM 16/24/32), and the device latency (2/3/4/5/10 msec), reboot the device, or clear the
+configuration of the device. Rename device is only available for third-party Dante devices.
+The characters “ ”, “_” and “ ’ ” are not allowed.
+
+32 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+. Network Config: You can view/set the network configuration of the device.
+
+. AES67 Config: You can view/set the AES67 configuration of the third-party Dante device.
+Note: Dante AV-ATM devices does not support this setting.
+
+33 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Clock Status
+The Clock Status interface displays the clock status of devices in the system, including ID,
+name, Sync status, mute status, clock source, primary v1 multicast, primary v2 multicast,
+secondary v1 multicast, secondary v2 multicast and preferred leader.
+Note: When the clock of the device synchronize the time of the leader Dante device, the Sync
+light is green, otherwise, both the Sync and mute lights are red and there is no signal output.
+
+Events
+The Events interface displays the event information of devices in the system, including
+number, timestamp, device name and event content.
+
+34 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Update
+Third-party Dante devices in the system can be updated on this interface. Click the drop down menu to select the Dante device type “Ultimo/DEP”, then check the box to select the
+devices to be updated, and click “Upload Dante Firmware” to upload the update firmware.
+After loading, you need to click “Update All” to update firmware for all devices, or click
+“Update” to update firmware for a single device.
+
+7.2.5 User
+
+On this page, you can add new user accounts with their own control privileges. This will
+allow you to create a unique login and limit features such as inputs and outputs that each
+person has access to. Follow steps below to create a new User.
+Step 1: Click “Create”, a pop-up window will be shown as below.
+
+35 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Step 2: Input the User Name, User Password and Confirm Password. Then click “Go” to
+create the User.
+Notes:
+(1) The username requires a minimum of 6 characters and a maximum length of 12
+characters. Special characters are not supported; The password has a minimum of 6
+characters and a maximum of 8 characters.
+(2) The Password and Confirm Password must be the same.
+
+After the new User is created, you can select the Encoders and Decoders as required by
+checking the devices on the bottom of the User page one by one, or directly click “Select All”
+to select all devices in the system. Then click “Apply” to take effect.
+Besides, you can click “Password” to change the User’s password, or click “Remove” to
+delete the User. If you want to login with the new User, just click the logout icon at the upper
+right corner of this page to log out, and then login with the new user name and password.
+
+36 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+7.2.6 Controller Settings
+
+System Configurations: Click “Save” to save the current configuration; click “Load” to load
+the system configuration JSON file and replace the current system configurations (It’s
+strongly recommended to save the current configurations before loading); click “Clear” to
+clear system configurations already created and configured in the controller, and you need
+to set up the system again.
+Controller Settings
+
+. General: The general settings of the Controller. You can check the Controller Version,
+GUI Version and Domain Name. In addition, you can set the RS-232 BaudRate, HTTPS,
+Telnet, Telnet Port, SSH and SSH Port.
+
+37 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+. Control Network: The network port configuration of the Controller connected to the router,
+PC directly or network Switch in where the PC for control is. When DHCP is set to “Off”, you
+can manually set the IP Address, Subnet Mask and Gateway as required, then click “Apply”
+to take effect. When DHCP is set to “On”, the system will search and fill the IP Address with
+the one assigned by the router automatically.
+Note: When DHCP is set to “Off” which is in Static IP mode, the network settings of Control
+LAN and PC should stay in same network segment. Otherwise, the controller Web GUI can
+not be accessed from PC until you change PC network settings in same network segment.
+. Video Network: The network port configuration of the Controller connected to the network
+where the Encoders and Decoders stay. When DHCP is set to “Off”, you can manually set the
+IP Address, Subnet Mask and Gateway as required, then click “Apply” to take effect. When
+DHCP is set to “On”, the system will search and fill the IP Address with the one assigned by
+the router automatically.
+Note: When DHCP is set to “Off” which is in Static IP mode, the network settings of Video
+LAN and Encoders/Decoders should stay in same network segment. Otherwise, Encoders/
+Decoders would be showed as offline. In this case, you should change Video LAN or
+Encoders/Decoders IP settings to be in same network segment to bring Encoders/Decoders
+back online. If the Encoders/Decoders are actually alive in the system but with incorrect
+network segment settings, even though Encoders/Decoders are showing offline, their network
+settings including IP address can be changed and set.
+. Controller Reset: Click “Settings Reset” to reset controller all settings except network
+settings; Click “Network Reset” to reset controller network settings; Click “Reset All” to reset
+controller all settings including network settings.
+7.2.7 Firmware Update
+
+. Upload User EDID 1/2: Click the button to open an EDID binary file and upload it to User
+EDID 1/2.
+
+. Upload Decoder Logo Picture: Click the button to upload the Decoder Logo Picture.
+Then click “Update All” to apply the picture for all Decoders or click “Update” to apply the
+picture for a single Decoder.
+Note: The jpg picture must be greater than 4kB, less than or equal to 512kB, and the
+resolution of the picture must be less than or equal to 1920x1080.
+
+38 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+. Upload Controller Firmware: Click the button to upload the Controller update firmware.
+. Upload Encoder or Decoder Firmware: Click the button to upload the Encoder/Decoder
+update firmware. After loading, you need to click “Update All” to update firmware for all
+Encoders/Decoders, or click “Update” to update firmware fora single Encoder/Decoder.
+
+7.2.8 Password
+
+On this page, you can change the password by inputting the New Password and Confirm
+Password, and then clicking “Apply” to take effect.
+Notes:
+(1) The password requires a minimum length of 6 characters and a maximum of 8 characters.
+Special characters are not supported.
+(2) The New Password and Confirm Password must be the same.
+(3) After changing password, the system will skip to the Web GUI login interface
+automatically. You need to log in the Web GUI again with the new password.
+In addition, there is a logout icon in the upper right corner of each page of the Web GUI.
+Clicking the icon will exit the Web GUI and automatically skip to the login interface.
+
+39 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+8. Application Example
+
+40 / 40
+
+CHAZY CONTROL. Central Management Box for CHAZY 4K AV over IP series
+
+Notes:
+(1) The Controller has two LAN ports, one is Video LAN and the other one is Control LAN.
+The purpose of designing Controller with two LAN ports is to isolate audio/video (AV) network
+from control network. So to make AV network as an independent network which can not be
+accessed from control network directly, it's for bringing network security and avoiding AV
+network traffic flowing into the network in which the controls and managements are for the IP
+system.
+The strongly recommended system setup is connecting Video LAN and Encoders/Decoders
+in a network Switch, connecting Control LAN and PC in another network Switch. The controls
+from Control LAN can be achieved by Web GUI/Telnet or SSH login/API commands, all these
+controls can be bridged by the Controller and applied onto Video LAN. The two LANs are
+isolated.
+For simple usage, you can only connect all Encoders/Decoders and Video LAN and PC RJ-45
+port into a single network, and let the Control LAN port not-connected (floating), as Video LAN
+also supports Web GUI/Telnet or SSH login/API commands controls, this seems "convenient"
+for general use scenarios, but this is only suggested for system in which there is no network
+isolation requirement or network traffic non-sensitive.
+Only Control LAN connected while Video LAN floating, this is not allowed.
+(2) For the default IP mode of Control LAN port of the Controller Box is DHCP, the PC also
+needs to be set to “Obtain an IP address automatically” mode, and an optional DHCP server
+(e.g. network router) is recommended in the system.
+(3) If there is no DHCP server in the system, 192.168.6.100 will be used as the IP address of
+Control LAN port. You need to set the IP address of the PC to be in the same network segment.
+For example, set PC’s IP address as 192.168.6.88.
+(4) You can access the Web GUI by inputting URL "http://controller.local"or the Control LAN
+port IP address 192.168.6.100 (in case of no optional router) on your computer's browser.
+(5) No need to care about settings of Video LAN port of the Controller Box, as they are
+managed by Controller automatically (Default).
+(6) When the Network Switch does not support POE, the Encoder, Decoder and Controller
+Box should be powered by DC power adapter.
+
+41 / 40
+
+
